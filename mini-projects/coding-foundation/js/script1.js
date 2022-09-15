@@ -52,10 +52,10 @@ let nCirc = document.createElementNS(svgns, "circle");
     nCirc.setAttribute("cy", "200");
     nCirc.setAttribute("r", "125");
     nCirc.setAttribute("fill", "blue");
-// star
-// let nPoly = document.createElementNS(svgns, "polygon");
-//     nPoly.setAttribute("points", "50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180");
-//     nPoly.setAttribute("fill", "green");
+star
+let nPoly = document.createElementNS(svgns, "polygon");
+    nPoly.setAttribute("points", "50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180");
+    nPoly.setAttribute("fill", "green");
 
 // array of svg elements
 // let svgArr = [

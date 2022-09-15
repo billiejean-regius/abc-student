@@ -6,9 +6,6 @@ clickMe.addEventListener("click", () => {
     var result = inputNum.value;
 
     let num = Number(result);
-
-    
-
     console.log(num);
 
     for (let i = 0; i < num ; i++) {
@@ -29,19 +26,31 @@ clickMe.addEventListener("click", () => {
             nRect.setAttribute("y", "100");
             nRect.setAttribute("width", "200");
             nRect.setAttribute("height", "200");
-            nRect.setAttribute("fill", "red");
+            nRect.setAttribute("class", "svgHover");
         // circle
         let nCirc = document.createElementNS(svgns, "circle");
             nCirc.setAttribute("cx", "200");
             nCirc.setAttribute("cy", "200");
             nCirc.setAttribute("r", "125");
-            nCirc.setAttribute("fill", "blue");
+            nCirc.setAttribute("class", "svgHover");
+        //  star
+        let nPoly = document.createElementNS(svgns, "polygon");
+            nPoly.setAttribute("points", "50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180");
+            nPoly.setAttribute("fill", "green");
+
+        const getRandom = (svgArr) => {
+            return svgArr[Math.floor(Math.random() * svgArr.length)];
+        };
+              
+        let svgArr = [
+            nRect, 
+            nCirc, 
+            // nPoly,
+        ];
 
         newSVG.appendChild(cSVG);
-        cSVG.appendChild(nCirc);
+        cSVG.appendChild(getRandom(svgArr));
     }
-
-        
 });
 
 

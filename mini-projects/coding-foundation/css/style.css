@@ -1,6 +1,32 @@
+h1 {
+    font-family: 'Cairo Play', cursive;
+    font-size: 100px;
+    color: #637479;
+}
+#clickMe, #inputNum {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #6e8085;
+    font-weight: 500;
+    border:3px solid #88989c;
+    border-radius:7px;
+    padding:5px;
+    margin:5px;
+}
+
 .svgDiv {
     width: 100px;
     height: 100px;
     display: inline-block;
     margin: 10px;
 }
+
+.svgHover {
+    margin-right: 2px;
+    transition: margin 0.2s ease-in-out;
+    fill: rgb(255, 157, 188);
+  }
+  
+  .svgHover:hover {
+    margin-top: -2;
+    fill: rgb(82, 185, 121);
+  }
