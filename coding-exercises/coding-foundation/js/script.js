@@ -35,8 +35,9 @@ clickMe.addEventListener("click", () => {
             nCirc.setAttribute("class", "svgHover");
         //  star
         let nPoly = document.createElementNS(svgns, "polygon");
-            nPoly.setAttribute("points", "50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180");
-            nPoly.setAttribute("fill", "green");
+            nPoly.setAttribute("points", "100,10 40,180 190,60 10,60 160,180");
+            nPoly.setAttribute("class", "svgHover");
+            nPoly.setAttribute("id", "svgPos");
 
         const getRandom = (svgArr) => {
             return svgArr[Math.floor(Math.random() * svgArr.length)];
@@ -45,7 +46,7 @@ clickMe.addEventListener("click", () => {
         let svgArr = [
             nRect, 
             nCirc, 
-            // nPoly,
+            nPoly,
         ];
 
         newSVG.appendChild(cSVG);

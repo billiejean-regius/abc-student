@@ -20,6 +20,15 @@ h1 {
     margin: 10px;
 }
 
+#svgPos {
+    position: relative;
+    left: 50%;
+    transform: 
+        translateX(12.5%)
+        translateY(12.5%)
+        scale(1.5);
+ }
+
 .svgHover {
     margin-right: 2px;
     transition: margin 0.2s ease-in-out;
