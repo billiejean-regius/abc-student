@@ -1,0 +1,80 @@
+.bkg_box03 {
+  border-radius: 50px;
+  background-image: -moz-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
+  background-image: -webkit-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
+  background-image: -ms-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
+  position: absolute;
+  left: 111px;
+  top: 301px;
+  width: 914px;
+  height: 499px;
+  z-index: 41;
+}
+
+
+#content {
+  overflow: hidden;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  width: 100%;
+  height: 100%;
+}
+:root {
+     /* desktop vars */
+     --grid-rows: 3;
+     --grid-cols: 6;
+}
+@media only screen and (min-width: 961px) {
+    :root {
+        /* deskptop vars */
+        --grid-rows: 3;
+        --grid-cols: 6;
+    }
+}
+@media only screen and (min-width:481px) and (max-width: 960px) {
+    :root {
+        /* tablet vars */
+        --grid-rows: 6;
+        --grid-cols: 3;
+    }
+}
+@media only screen and (max-width: 480px) {
+    :root {
+        /* mobile vars */
+        --grid-rows: 18;
+        --grid-cols: 1;
+    }
+  }
+#test {
+  width: 100%;
+  height: 100%;
+}
+.inline-div {
+  padding-top: 60px;
+}
+#container {
+  display: grid;
+  margin-top: 80px;
+  right: 0;
+  left: 0;
+  row-gap: 80px;
+  font-size: 15px;
+  text-align: center;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);*
+}
+.col-sm {
+  width: 160px;
+  height: 142px;
+  left: 0;
+  right: 0;
+  align-self: center;
+  border:1px solid rgba(0, 0, 0, 1.0);
+  transition: all .2s ease-in-out;
+}
+.col-sm:hover {
+  /**background-color: yellow;**/
+  transform: scale(1.25);
+}
+
+
