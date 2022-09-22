@@ -1,7 +1,7 @@
 body {
   background-color: rgb(31, 33, 34);
 }
-h1 {
+.hypHead {
   font-size: 60px;
     font-family: "Acumin Variable Concept";
     color: rgb(94, 187, 148);
@@ -45,7 +45,6 @@ h1 {
   justify-content: center;
   align-content: center;
   align-items: center;
-  display: grid;
   row-gap: 100px;
   column-gap: 100px;
   font-size: 15px;
@@ -53,45 +52,41 @@ h1 {
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
-.cards__single {
-  margin-top: 20px;
+.cardForm {
+
   border-radius: 50px;
   width: 354px;
   height: 483px;
   background-color: rgb(39, 41, 42);
   cursor: pointer;
   text-align: center;
-  -webkit-transition: transform 0.6s;
   transform-style: preserve-3d;
   transition: 0.5s;
-  -webkit-transition: 0.5s;
-  position: relative;
-transition: transform 0.6s;
-  -webkit-transition: transform 0.6s;
+  transition: transform 0.6s;
 }
-.cards__single.flip {
+.cardForm.flip {
   transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  background-color: rgb(60, 151, 197);
 }
-.cards__front,
-.cards__back {
-  -webkit-backface-visibility: hidden;
+.front {
+  /* transform: rotateX(0deg); */
+  border-radius: 50px;
+  background-color: rgb(39, 41, 42);
+}
+.back {
+  width: 354px;
+  height: 483px;
+  transform: rotateY(180deg); 
+  text-align: center;
+  background-color: rgb(60, 151, 197);
+  border-radius: 50px;
+}
+.front,
+.back {
+  position: absolute;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
 }
-.cards__front {
-  height: 100%;
-  transform: rotateX(0deg);
-  -webkit-transform: rotateX(0deg);
-  border-radius: 50px;
-  background-color: rgb(39, 41, 42);
-}
-.cards__back {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  text-align: center;
-}
+
 
 

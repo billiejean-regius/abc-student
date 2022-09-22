@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll(".cards__single");
+const cards = document.querySelectorAll(".cardForm");
 
 function flipCard() {
   this.classList.toggle("flip");
