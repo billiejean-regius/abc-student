@@ -14,14 +14,14 @@ body {
 }
 :root {
      /* desktop vars */
-     --grid-rows: 5;
-     --grid-cols: 2;
+     --grid-rows: 2;
+     --grid-cols: 5;
 }
 @media only screen and (min-width: 961px) {
     :root {
         /* deskptop vars */
-        --grid-rows: 5;
-        --grid-cols: 2;
+        --grid-rows: 2;
+        --grid-cols: 5;
     }
 }
 @media only screen and (min-width:481px) and (max-width: 960px) {
