@@ -14,27 +14,27 @@ body {
 }
 :root {
      /* desktop vars */
-     --grid-rows: 4;
+     --grid-rows: 5;
      --grid-cols: 2;
 }
 @media only screen and (min-width: 961px) {
     :root {
         /* deskptop vars */
-        --grid-rows: 2;
-        --grid-cols: 4;
+        --grid-rows: 5;
+        --grid-cols: 2;
     }
 }
 @media only screen and (min-width:481px) and (max-width: 960px) {
     :root {
         /* tablet vars */
-        --grid-rows: 4;
+        --grid-rows: 5;
         --grid-cols: 2;
     }
 }
 @media only screen and (max-width: 480px) {
     :root {
         /* mobile vars */
-        --grid-rows: 8;
+        --grid-rows: 10;
         --grid-cols: 1;
     }
   }
