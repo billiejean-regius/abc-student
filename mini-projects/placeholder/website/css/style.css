@@ -1,24 +1,17 @@
-.svg-block {
-  border-radius: 50px;
-  background-image: -moz-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
-  background-image: -webkit-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
-  background-image: -ms-linear-gradient( -150deg, rgb(86,48,73) 0%, rgb(116,26,48) 9%, rgba(77,92,186,0.99) 47%, rgba(76,130,186,0.98) 56%, rgba(74,166,185,0.98039) 62%, rgba(74,168,185,0.98) 62%, rgba(95,206,163,0.98) 68%, rgba(73,151,121,0.99) 76%, rgb(51,95,79) 95%, rgb(40,83,66) 100%);
-  /**position: absolute;
-  left: 111px;
-  top: 301px;
-  width: 914px;
-  height: 499px;**/
-  z-index: 100;
+body {
+  background-color: rgb(31, 33, 34);
 }
-
-
-/* #content {
-  overflow: hidden;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  width: 100%;
-  height: 100%;
-} */
+h1 {
+  font-size: 60px;
+    font-family: "Acumin Variable Concept";
+    color: rgb(94, 187, 148);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.content {
+  position: absolute;
+}
 :root {
      /* desktop vars */
      --grid-rows: 3;
@@ -45,40 +38,27 @@
         --grid-cols: 1;
     }
   }
-#container {
+
+.cards {
   display: grid;
-  row-gap: 500px;
+  perspective: 10000px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  display: grid;
+  row-gap: 100px;
   column-gap: 100px;
   font-size: 15px;
   text-align: center;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
-/* .col-sm {
-  left: 0;
-  right: 0;
-  align-self: center;
-  *border:1px solid rgba(0, 0, 0, 1.0);
-  transition: all .2s ease-in-out;
-} 
-.col-sm:hover {
-  transform: scale(1.25);
-} */
-.cards {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  perspective: 10000px;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
 .cards__single {
   margin-top: 20px;
   border-radius: 50px;
-  background-color: rgb(39, 41, 42);
   width: 354px;
   height: 483px;
+  background-color: rgb(39, 41, 42);
   cursor: pointer;
   text-align: center;
   -webkit-transition: transform 0.6s;
@@ -92,6 +72,7 @@ transition: transform 0.6s;
 .cards__single.flip {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  background-color: rgb(60, 151, 197);
 }
 .cards__front,
 .cards__back {
@@ -104,12 +85,12 @@ transition: transform 0.6s;
   height: 100%;
   transform: rotateX(0deg);
   -webkit-transform: rotateX(0deg);
+  border-radius: 50px;
+  background-color: rgb(39, 41, 42);
 }
-
 .cards__back {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
-  position: absolute;
   text-align: center;
 }
 
