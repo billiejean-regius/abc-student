@@ -32,6 +32,7 @@ clickMe.addEventListener("click", () => {
                 text_cont.classList.add("text_container");
                 text_wrap.classList.add("text_wrapper");
                 text_span.classList.add("letters");
+                    text_span.setAttribute("data-period", "2000");
 
             text_span.innerHTML = "Hello!";    
 
