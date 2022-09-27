@@ -33,6 +33,7 @@ clickMe.addEventListener("click", () => {
                 text_wrap.classList.add("text_wrapper");
                 text_span.classList.add("letters");
                     text_span.setAttribute("data-period", "2000");
+                    text_span.setAttribute("data-rotate", '["death", "chariot", "lovers", "tower", "hangman" ]');
 
             text_span.innerHTML = "Hello!";    
 
