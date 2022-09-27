@@ -1,46 +1,3 @@
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    /* background-color: rgb(45, 201, 201); */
-
-    /* hide scrollbar but allow scrolling */
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll;
-}
-
-body::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-}
-
-html, body {
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-#content {
-    padding: 0px;
-    margin: 0px;
-    width: 100vh;
-    height: 100vh;
-}
-/* "hidden" elements */
-.hidden {
-display: none;
-}
-
-.card_deck {
-    
-    /* position: relative; */
-    margin: 50px auto;
-  }
-.container {
-    float: left;
-    justify-content: center;
-    text-align: center;
-}
 .flip_card.flip {
     transform:rotatey(-180deg);
   }
@@ -68,7 +25,7 @@ display: none;
   
 .flip_card .front {
     line-height: 160px;
-    background-image:url("tarot_01.png");
+    /* background-image:url("tarot_01.png");  */
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -90,17 +47,3 @@ display: none;
     transform:rotatey(-180deg);
     backface-visibility: hidden; 
   }
-  /* .text_container {
-
-  }
-  .text_wrapper {
-
-  }
-  .letters {
-
-  } */
-      
-    
-        
-        
-  
