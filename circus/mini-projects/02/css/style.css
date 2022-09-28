@@ -1,35 +1,60 @@
-    :root {
-        /* color schemes */
-        --cp-time01: 0, 0, 0;
-        --cp-time02: 0, 0, 0;
-        --cp-time03: 0, 0, 0;
-        --cp-time04: 0, 0, 0;
-        --cp-time05: 0, 0, 0;
-        --cp-time06: 0, 0, 0;
+:root {
+    /* color schemes */
+    --cp-time01: 0, 0, 0;
+    --cp-time02: 0, 0, 0;
+    --cp-time03: 0, 0, 0;
+    --cp-time04: 0, 0, 0;
+    --cp-time05: 0, 0, 0;
+    --cp-time06: 0, 0, 0;
+
+}
+@media only screen and (min-width: 961px) { 
+    /* deskptop vars */
+    
+    }
+@media only screen and (min-width:481px) and (max-width: 960px) {
+    /* tablet vars */
+    
+    }
+@media only screen and (max-width: 480px) {
+        /* mobile vars */
+    #timezone_navigation {
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+        border: 1px solid white;
+        /* overflow: scroll; */
+        width: 100%;
+    } 
+    #map_content {
+        width: 100%;
+        height: 100%
+        float: left;
+        margin: auto;
+        border: 1px solid blue;
 
     }
-    @media only screen and (min-width: 961px) {
-    :root {
-        /* deskptop vars */
+    #time_header {
+        position: relative;
+        border: 1px solid white;
+        overflow: scroll;
+        width: 100%;
+        border: 1px solid red;
+        
     }
-    }
-    @media only screen and (min-width:481px) and (max-width: 960px) {
-    :root {
-        /* tablet vars */
-    }
-    }
-    @media only screen and (max-width: 480px) {
-    :root {
-        /* mobile vars */
-    }
-    }
+    /* .test {
+        border: 1px solid white;
+        padding: 5px;
+        color: white;
+        margin: 5px;
+    } */
+}
     
     body {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
         /* background-color: rgb(45, 201, 201); */
-        
 
         /* hide scrollbar but allow scrolling */
         -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -54,6 +79,7 @@
         background: linear-gradient(120deg, rgba(var(--cp-time01), 1.0), rgba(var(--cp-time02), 1.0), rgba(var(--cp-time03), 1.0), rgba(var(--cp-time04), 1.0), rgba(var(--cp-time05), 1.0), rgba(var(--cp-time06), 1.0)); 
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
+        width: 100vw;
         height: 100vh;
     }
     @keyframes gradient {
@@ -67,8 +93,8 @@
             background-position: 0% 50%;
         }
     }
+
   /* "hidden" elements */
   .hidden {
     display: none;
   }
-  
