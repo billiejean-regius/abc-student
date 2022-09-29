@@ -59,68 +59,131 @@ html, body {
     }
 }
 
+#timezone_navigation {
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+    /* border: 1px solid white; */
+    height: 90vh;
+    /* overflow: hidden; */
+}
+#time_header {
+    /* border: 1px solid white; */
+    position: absolute;
+    top: 0;
+}
+#header_blocks {
+    display: flex;
+    /* transform: skewY(1deg); */
+}
+#header_blocks > * {
+    animation: header 20s infinite linear;
+}
+#time_footer {
+    position: absolute;
+    bottom: 0;
+    /* transform: skewY(-1deg); */
+}
+#footer_blocks {
+    display: flex;
+    /* transform: skewY(-1deg); */
+    animation: footer 30s infinite linear;
+    /* animation-direction: reverse; */
+}
+@keyframes header {
+    /* 0% {transform: translateX(0) translateY(0);}
+    100% {transform: translateX(-1000px) translateY(15px);} */
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-500px);}
+  }
+@keyframes footer {
+    0% {transform: translateX(-850px);}
+    100% {transform: translateX(50px);}
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+  }
+  #time {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top:50%;
+    transform: translateY(-50%) translateX(50%); 
+    color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+  }
+  
+
 @media only screen and (min-width: 961px) { 
     /* deskptop vars */
-    
+    .single_block {
+        display: flex;
+        margin: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        align-items:center;
+        justify-content:center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        /* background-color: aqua; */
+    }
     }
 @media only screen and (min-width:481px) and (max-width: 960px) {
     /* tablet vars */
     
+    .single_block {
+        display: flex;
+        margin: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        vertical-align: middle;
+        align-items:center;
+        justify-content:center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        /* background-color: aqua; */
+    }
+    
     }
 @media only screen and (max-width: 480px) {
         /* mobile vars */
-    #timezone_navigation {
-        position: relative;
-        top:50%;
-        transform: translateY(-50%);
-        border: 1px solid white;
-        height: 90vh;
-        /* overflow: hidden; */
-    }
-    #time_header {
-        /* border: 1px solid white; */
-        position: absolute;
-        top: 0;
-    }
-    #header_blocks {
-        display: flex;
-        /* transform: skewY(1deg); */
-    }
-    #header_blocks > * {
-        animation: header 20s infinite linear;
-    }
-    #time_footer {
-        position: absolute;
-        bottom: 0;
-        /* transform: skewY(-1deg); */
-    }
-    #footer_blocks {
-        display: flex;
-        /* transform: skewY(-1deg); */
-        animation: footer 30s infinite linear;
-        /* animation-direction: reverse; */
-    }
     .single_block {
+        display: flex;
         margin: 5px;
-        border: 1px solid white;
-        width: 50px;
-        height: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 80px;
+        height: 80px;
         text-align: center;
-        color: white;
+        vertical-align: middle;
+        align-items:center;
+        justify-content:center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
         /* background-color: aqua; */
     }
-    @keyframes header {
-        /* 0% {transform: translateX(0) translateY(0);}
-        100% {transform: translateX(-1000px) translateY(15px);} */
-        0% {transform: translateX(0);}
-        100% {transform: translateX(-500px);}
+    #time {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        width: 60%;
+        height: 50%;
+        position: relative;
+        top:50%;
+        transform: translateY(-50%) translateX(35%); 
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
       }
-    @keyframes footer {
-        0% {transform: translateX(-850px);}
-        100% {transform: translateX(500px);}
-      }
-      
-      
     
 }
 
