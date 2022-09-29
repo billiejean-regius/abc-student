@@ -1,22 +1,3 @@
-// let randColor = [
-//     [185, 220, 172],
-//     [135, 208, 213],
-//     [201, 188, 213],
-//     [249, 183, 176],
-//     [252, 207, 166],
-//     [249, 232, 154],
-// ];
-
-// const getColor = (randColor) => {
-//     return randColor[Math.floor(Math.random() * randColor.length)];
-// };
-
-// console.log(getColor(randColor));
-
-// let coolors = getColor(randColor);
-// coolorsArray = [coolors[0], coolors[1], coolors[2]];
-// console.log(coolors[0], coolors[1], coolors[2]);
-
 let formOne = ["11 P.M.", "12 A.M", "1 A.M.", "2 A.M.", "3 A.M.", "4 A.M.", "5 A.M.", "6 A.M.", "7 A.M.", "8 A.M.", "9 A.M.", "10 A.M.", "11 A.M.", "12 P.M.", "1 P.M.", "2 P.M.", "3 P.M.", "4 P.M.", "5 P.M.", "6 P.M.", "7 P.M.", "8 P.M.", "9 P.M.", "10 P.M."];
 let formTwo = ["+11", "+12|-12", "-11", "-10", "-9", "-8", "-7", "-6", "-5", "-4","-3", "-2", "-1", "0", "+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10"];
 
@@ -62,7 +43,7 @@ function myTime() {
     if (hours   < 10) {hours   = "0"+hours;} {
         if (minutes < 10) {minutes = "0"+minutes;} {
             if (hours <= 5 && hours >= 0 && minutes <= 59 && minutes >= 0) {
-                //setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "AM" + " " + "-" + " " + "Good Night!"; //Good Night
+                setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "AM" + " " + "-" + " " + "Good Night!"; //Good Night
                 setBackground.style.setProperty("--cp-time01", "0, 0, 0;");
                 setBackground.style.setProperty("--cp-time02", "31, 48, 199");
                 setBackground.style.setProperty("--cp-time03", "63, 83, 129");
@@ -71,7 +52,7 @@ function myTime() {
                 setBackground.style.setProperty("--cp-time06", "0, 0, 0;");
                 console.log("Night");
             } else if (hours <= 11 && hours >= 6 && minutes <= 59 && minutes >= 0) {
-                //setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "AM" + " " + "-" + " " + "Good Morning!"; //Good Morning
+                setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "AM" + " " + "-" + " " + "Good Morning!"; //Good Morning
                 setBackground.style.setProperty("--cp-time01", "243, 234, 108");
                 setBackground.style.setProperty("--cp-time02", "255, 175, 141");
                 setBackground.style.setProperty("--cp-time03", "146, 162, 240");
@@ -80,7 +61,7 @@ function myTime() {
                 setBackground.style.setProperty("--cp-time06", "146, 162, 240");
                 console.log("Morning");
             } else if (hours <= 17 && hours >= 12 && minutes <= 59 && minutes >= 0) {
-                //setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "PM" + " " + "-" + " " + "Good Afternoon!"; //Good Afternoon
+                setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "PM" + " " + "-" + " " + "Good Afternoon!"; //Good Afternoon
                 setBackground.style.setProperty("--cp-time01", "146, 162, 240");
                 setBackground.style.setProperty("--cp-time02", "240, 226, 136");
                 setBackground.style.setProperty("--cp-time03", "250, 147, 114");
@@ -89,7 +70,7 @@ function myTime() {
                 setBackground.style.setProperty("--cp-time06", "0, 0, 0");
                 console.log("Afternoon");
             } else if (hours <= 23 && hours >= 18 && minutes <= 59 && minutes >= 0) {
-                //setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "PM" + " " + "-" + " " + "Good Evening!"; //Good Evening
+                setTime.innerHTML = "The current time is" + " " + hours + ":" + minutes + " " + "PM" + " " + "-" + " " + "Good Evening!"; //Good Evening
                 setBackground.style.setProperty("--cp-time01", "199, 148, 194");
                 setBackground.style.setProperty("--cp-time02", "255, 175, 141");
                 setBackground.style.setProperty("--cp-time03", "146, 162, 240");
@@ -104,17 +85,4 @@ function myTime() {
 
 myTime();
 
-let sw = screen.width;
-let sh = screen.height;
-
-function getTime(){
-    let ranX = Math.random()*sh;
-    let ranY = Math.random()*sh;
-
-    let win1 = window.open("css/assets", "_blank", "width=500, height=500, left="+ranX+", top="+ranY);
-  
-}; 
-
-button.addEventListener("click", getTime);
-          
-        
+    

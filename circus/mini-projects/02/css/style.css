@@ -6,12 +6,6 @@
     --cp-time04: 0, 0, 0;
     --cp-time05: 0, 0, 0;
     --cp-time06: 0, 0, 0;
-    --rand-col01: 185, 220, 172;
-    --rand-col02: 135, 208, 213;
-    --rand-col03: 201, 188, 213;
-    --rand-col04: 249, 183, 176;
-    --rand-col05: 252, 207, 166;
-    --rand-col06: 249, 232, 154;
 
 }
 body {
@@ -118,7 +112,18 @@ html, body {
     top:50%;
     transform: translateY(-50%) translateX(50%); 
     color: rgba(255, 255, 255, 0.6);
-        font-size: 20px;
+    font-size: 20px;
+  }
+  #button {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top:50%;
+    transform: translateY(-50%) translateX(0%); 
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
   }
   
 
