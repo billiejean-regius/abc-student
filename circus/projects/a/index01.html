@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main-content">
+
+        <p id="main-text">Checking you are seeing this on mobile.</p>
+        
+        <div id="getGyroAccess">
+            <div>This project utilizes your phone's gyroscope, please allow access.</div>
+            <button id="allowButton">Allow Access</button>
+            <p id="gyro-text"></p>
+        </div>
+        <div id="sound-interface">
+            <div id="onoff">
+                <!-- <button type="button" id="on" name="button">🔊</button>
+                <button type="button" id="off" name="button">🔇</button> -->
+                <button type="button" id="onofftoggle" name="button">🔊</button>
+            </div>
+    
+            <div id="debug" class="hidden">
+                <p>alpha: <span id="alpha"></span></p>
+                <p>beta: <span id="beta"></span></p>
+                <p>gamma: <span id="gamma"></span></p>
+                <p>acc_x: <span id="acc_x"></span></p>
+                <p>acc_y: <span id="acc_y"></span></p>
+                <div id="min-slider" class="slider-wrapper">
+                    <p id="min-label">0</p>
+                    <input class="limit-range" id="min" type="range">
+                    <div class="filler"></div>
+                </div>
+                <div id="max-slider" class="slider-wrapper">
+                    <div class="filler"></div>
+                    <input class="limit-range" id="max" type="range">
+                    <p id="max-label">0</p>
+                </div>
+                
+                
+            </div>
+            <button type="button" id="debugbutton" name="button">🤖</button>
+    
+            <p id="hertzDisplay"></p>
+            <!-- <div id="shareWrapper">
+                <p>⬇ connect additional phones ⬇</p>
+                <img src="gyro-osc.png" alt="">
+            </div> -->
+        </div> 
+        <!-- sound-interface-->
+
+        <button id="getCard">Get Card</button>
+        <div id="cardContainer"></div>
+            <div id="card" class="card">
+                <div id="sides">
+                    <div id="front" class="front side">
+
+                    </div>
+                    <div id="back">
+    
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        
+        
+
+    
+
+
+
+<script src="js/script01.js"></script>
+</body>
+</html>
+
+
+<!-- references -->
+
+<!-- 
+    1: 
+        A.
+                https://www.programiz.com/javascript/constructor-function
+    2: Random Weighted Function with Arrays
+        A. Stackoverflow 
+                https://stackoverflow.com/questions/55257022/choosing-random-weighted-object-from-an-array
+    3: Localstorage
+
+            https://w3collective.com/save-data-localstorage-javascript/
+    3: Animating CSS Shapes with CSS Animations and Transitions
+        A. Sara Soueidan [https://www.sarasoueidan.com/about/]
+                https://www.sarasoueidan.com/blog/animating-css-shapes/
+                
+        
+
+ -->
