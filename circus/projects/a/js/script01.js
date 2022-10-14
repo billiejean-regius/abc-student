@@ -16,27 +16,39 @@ class Card extends Item { // extend: Card is a subclass of item
 // all collectible cards
 const collectibles = [
     // creating card objects
-    card01 = new Card ("The Chariot", 5, 1, 0, "url('js/cards/tarot01.png')"),
-    card02 = new Card ("Strength", 5, 1, 0, "url('js/cards/tarot02.png')"),
-    card03 = new Card ("The High Priestess", 5, 1, 0, "url('js/cards/tarot03.png')"),
-    card04 = new Card ("Nine of Rings", 5, 1, 0, "url('js/cards/tarot04.png')"),
-    card05 = new Card ("The Magician", 5, 1, 0, "url('js/cards/tarot05.png')"),
-    card06 = new Card ("Three of Rings", 5, 1, 0, "url('js/cards/tarot06.png')"),
-    card07 = new Card ("Eight of Rings", 5, 1, 0, "url('js/cards/tarot07.png')"),
-    card08 = new Card ("The Fool", 5, 1, 0, "url('js/cards/tarot08.png')"),
-    card09 = new Card ("Two of Swords", 5, 1, 0, "url('js/cards/tarot09.png')"),
-    card10 = new Card ("The World", 5, 1, 0, "url('js/cards/tarot10.png')"),
-    card11 = new Card ("The Moon", 5, 1, 1, "url('js/cards/tarot11.png')"),
-    card12 = new Card ("The Star", 5, 1, 1, "url('js/cards/tarot12.png')"),
-    card13 = new Card ("Three of Wands", 5, 1, 1, "url('js/cards/tarot13.png')"),
-    card14 = new Card ("Death", 5, 1, 2, "url('js/cards/tarot14.png')"),
-    card15 = new Card ("The Empress", 5, 1, 3, "url('js/cards/tarot15.png')"),
+    chariot = new Card ("The Chariot", 5, 1, 0, "url('js/cards/tarot01.png')"),
+    strength = new Card ("Strength", 5, 1, 0, "url('js/cards/tarot02.png')"),
+    highpriestess = new Card ("The High Priestess", 5, 1, 0, "url('js/cards/tarot03.png')"),
+    ninerings = new Card ("Nine of Rings", 5, 1, 0, "url('js/cards/tarot04.png')"),
+    magician = new Card ("The Magician", 5, 1, 0, "url('js/cards/tarot05.png')"),
+    threerings = new Card ("Three of Rings", 5, 1, 0, "url('js/cards/tarot06.png')"),
+    eightrings = new Card ("Eight of Rings", 5, 1, 0, "url('js/cards/tarot07.png')"),
+    fool = new Card ("The Fool", 5, 1, 0, "url('js/cards/tarot08.png')"),
+    twoswords = new Card ("Two of Swords", 5, 1, 0, "url('js/cards/tarot09.png')"),
+    world = new Card ("The World", 5, 1, 0, "url('js/cards/tarot10.png')"),
+    moon = new Card ("The Moon", 5, 1, 1, "url('js/cards/tarot11.png')"),
+    star = new Card ("The Star", 5, 1, 1, "url('js/cards/tarot12.png')"),
+    threewands = new Card ("Three of Wands", 5, 1, 1, "url('js/cards/tarot13.png')"),
+    death = new Card ("Death", 5, 1, 2, "url('js/cards/tarot14.png')"),
+    empress = new Card ("The Empress", 5, 1, 3, "url('js/cards/tarot15.png')"),
 ];
 
 //card descriptions
-card01.description = "Lorem ipsum";
-card02.description = "something";
-card03.description = "more random stuff";
+chariot.description = "The Chariot shows that you should pursue the plan with a structured and ordered approach.";
+strength.description = "Your resilience will greatly aid you, and your fearlessness means that you should have no issues speaking your mind.";
+highpriestess.description = "Her appearance in a reading can signify that it is time for you to listen to your intuition rather than prioritizing your intellect and conscious mind.";
+ninerings.description = "Realize you are free to create a secure, enduring, and satisfying lifestyle for yourself.";
+magician.description = "Remember that you are powerful, create your inner world, and the outer will follow.";
+threerings.description = "The Three of Rings is about spending quality time with people you cherish in your life.";
+eightrings.description = "You are coming to a realization that you must step away from what is familiar.";
+fool.description = "He inspires courage, for he understands that every day is a chance to open up new areas in your life, and with that comes a mixture of anticipation, wonder, awe and curiosity.";
+twoswords.description = "We find ourselves in a situation where we must make a choice...Neither seems particularly appealing.";
+world.description = "To encounter the World in your cards is to encounter a great unity and wholeness.";
+moon.description = "The moon's light can bring you clarity and understanding and you should allow your intuition to guide you through this darkness.";
+star.description = "To see this card is a message to have faith, for the universe will bless you and bring forth all that you need.";
+threewands.description = "The Three of Wands hints that you are creating a stable foundation for yourself.";
+death.description = "The Death card signals that one major phase in your life is ending, and a new one is going to start.";
+empress.description = "The Empress is associated with fertility, expression, creativity and nurturing among many other aspects.";
 
 // array for cards based on rarity 
 // all common cards
@@ -65,6 +77,7 @@ var cardCollection = [];
 
 let cardFront = document.getElementById('front');
 let displaycardName = document.getElementById('cardName');
+let displaycardInfo = document.getElementById('cardMeaning');
 
 function gachaCard(name, state, image) {
     let random = collectibles[Math.floor(Math.random() * collectibles.length)];
@@ -74,6 +87,7 @@ function gachaCard(name, state, image) {
     console.log(cardCollection);
     cardFront.style.backgroundImage = random.image;
     displaycardName.innerHTML = random.name;
+    displaycardInfo.innerHTML = random.description;
     // console.log(random.image)
     // return random
 };

@@ -92,6 +92,22 @@ html, body {
     height: var(--cardY);; */
     
 }
+blockquote::before {
+    content: "\201c";
+    font-size: 48px;
+    opacity: .2;
+    position: relative; 
+    color: #b89662;
+}
+#cardMeaning {
+    font-family: eb garamond;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24;
+    line-height: 1.385;
+    text-align: center;
+    color: #b89662;
+}
 .hidden {
     display: none;
 }
