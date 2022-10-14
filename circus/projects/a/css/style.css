@@ -26,71 +26,66 @@ html, body {
     text-align: center;
 }
 #main-content {
+    border: 5px solid rgb(150, 19, 19);
     padding: 0px;
     margin: 0px;
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    width: 90%;
+    height: 95%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
 
 }
-
-@media only screen and (min-width: 961px) { 
-    /* deskptop vars */
-   
-    }
-@media only screen and (min-width:481px) and (max-width: 960px) {
-    /* tablet vars */
+.bold {
+    font-family: eksell;
+    color: #b89662;
+    font-size: 24px;
+    font-weight: bold;
+}
+.name {
+    font-size: 54px;
+}
+.font {
+    font-family: eb garamond;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.385;
+    text-align: center;
+    color: #b89662;
+}
+#getGyroAccess {
+    border: 10px solid rgb(122, 19, 150); 
+}
+#cardInterface {
+    border: 20px solid rgb(19, 150, 21);
     
-    }
-@media only screen and (max-width: 480px) {
-        /* mobile vars */
+}
+#cardContainer {
+    border: 5px solid rgb(24, 47, 84);
+    paddi
     
 }
-#card-container {
-
-}
-#card {
-    border: 1px solid black;
-    /* background-color: blue; */
-    border-radius: 15px;
-    /* width: 140px;
-    height: 250px; */
-    /* width: 50%;
-    height: 70%; */
-    width: 100%;
-    height: 100%;
+.card {
+    transform: scale(50%); 
+    margin-top: -30%;
 }
 .side {
-    border: 1px solid black;
+    position:  relative;
     border-radius: 50px;
     /* padding-top: 140%; */
     aspect-ratio: 5/7;
-    /* width: 100%; */
-    position:  absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     text-align: center;
-    /* /* width: 100%; */
-    transform: scale(50%); 
+    /* transform: scale(50%);  */
     overflow: hidden;
 }
 #front {
     /* background-image: url("cards/tarotbase01.png"); */
     background-repeat: no-repeat;
     background-position: center;
-    /* width: 100%;
-    height: 100%; */
-    
     background-size: 150%;
-    /* transform: scale(100%);  */
-
-    
-   
-    
-    /* width: var(--cardX);
-    height: var(--cardY);; */
-    
 }
 blockquote::before {
     content: "\201c";
@@ -99,15 +94,7 @@ blockquote::before {
     position: relative; 
     color: #b89662;
 }
-#cardMeaning {
-    font-family: eb garamond;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 24;
-    line-height: 1.385;
-    text-align: center;
-    color: #b89662;
-}
+
 .hidden {
     display: none;
 }
