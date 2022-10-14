@@ -16,21 +16,21 @@ class Card extends Item { // extend: Card is a subclass of item
 // all collectible cards
 const collectibles = [
     // creating card objects
-    card01 = new Card ("card of death", 5, 1, 0, "url('js/cards/tarot01.png')"),
-    card02 = new Card ("two towers", 5, 1, 0, "url('js/cards/tarot02.png')"),
-    card03 = new Card ("lovers", 5, 1, 0, "url('js/cards/tarot03.png')"),
-    card04 = new Card ("king", 5, 1, 0, "url('js/cards/tarot04.png')"),
-    card05 = new Card ("queen", 5, 1, 0, "url('js/cards/tarot05.png')"),
-    card06 = new Card ("gates", 5, 1, 0, "url('js/cards/tarot06.png')"),
-    card07 = new Card ("name", 5, 1, 0, "url('js/cards/tarot07.png')"),
-    card08 = new Card ("thing", 5, 1, 0, "url('js/cards/tarot08.png')"),
-    card09 = new Card ("joker", 5, 1, 0, "url('js/cards/tarot09.png')"),
-    card10 = new Card ("jack", 5, 1, 0, "url('js/cards/tarot10.png')"),
-    card11 = new Card ("bridge", 5, 1, 1, "url('js/cards/tarot11.png')"),
-    card12 = new Card ("flower", 5, 1, 1, "url('js/cards/tarot12.png')"),
-    card13 = new Card ("test", 5, 1, 1, "url('js/cards/tarot13.png')"),
-    card14 = new Card ("ugh", 5, 1, 2, "url('js/cards/tarot14.png')"),
-    card15 = new Card ("okay", 5, 1, 3, "url('js/cards/tarot15.png')"),
+    card01 = new Card ("The Chariot", 5, 1, 0, "url('js/cards/tarot01.png')"),
+    card02 = new Card ("Strength", 5, 1, 0, "url('js/cards/tarot02.png')"),
+    card03 = new Card ("The High Priestess", 5, 1, 0, "url('js/cards/tarot03.png')"),
+    card04 = new Card ("Nine of Rings", 5, 1, 0, "url('js/cards/tarot04.png')"),
+    card05 = new Card ("The Magician", 5, 1, 0, "url('js/cards/tarot05.png')"),
+    card06 = new Card ("Three of Rings", 5, 1, 0, "url('js/cards/tarot06.png')"),
+    card07 = new Card ("Eight of Rings", 5, 1, 0, "url('js/cards/tarot07.png')"),
+    card08 = new Card ("The Fool", 5, 1, 0, "url('js/cards/tarot08.png')"),
+    card09 = new Card ("Two of Swords", 5, 1, 0, "url('js/cards/tarot09.png')"),
+    card10 = new Card ("The World", 5, 1, 0, "url('js/cards/tarot10.png')"),
+    card11 = new Card ("The Moon", 5, 1, 1, "url('js/cards/tarot11.png')"),
+    card12 = new Card ("The Star", 5, 1, 1, "url('js/cards/tarot12.png')"),
+    card13 = new Card ("Three of Wands", 5, 1, 1, "url('js/cards/tarot13.png')"),
+    card14 = new Card ("Death", 5, 1, 2, "url('js/cards/tarot14.png')"),
+    card15 = new Card ("The Empress", 5, 1, 3, "url('js/cards/tarot15.png')"),
 ];
 
 //card descriptions
@@ -64,6 +64,7 @@ for (let i of collectibles) {
 var cardCollection = []; 
 
 let cardFront = document.getElementById('front');
+let displaycardName = document.getElementById('cardName');
 
 function gachaCard(name, state, image) {
     let random = collectibles[Math.floor(Math.random() * collectibles.length)];
@@ -72,6 +73,7 @@ function gachaCard(name, state, image) {
     console.log(random);
     console.log(cardCollection);
     cardFront.style.backgroundImage = random.image;
+    displaycardName.innerHTML = random.name;
     // console.log(random.image)
     // return random
 };
@@ -166,22 +168,6 @@ let mappedHertz = map(1, 0, 100, minHz, maxHz);
 oscillator.frequency.value = mappedHertz;
 hertzDisplay.innerHTML = mappedHertz;
 
-// let playing = false;
-// toggle.addEventListener("click", ()=>{
-//     if(playing){
-//         gain.gain.value = 0;
-//         playing = false;
-//         toggle.innerHTML = "🔊";
-//     }else{
-//         if(!oscillatorStarted){
-//             oscillator.start(0);
-//             oscillatorStarted = true;
-//         }
-//         gain.gain.value = 1;
-//         playing = true;
-//         toggle.innerHTML = "🔇";
-//     }
-// })
 
 let showDebug = false;
 let debugButton = document.getElementById("debugbutton");
