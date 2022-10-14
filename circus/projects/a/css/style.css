@@ -24,9 +24,10 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: rgb(250, 248, 246);
 }
 #main-content {
-    border: 5px solid rgb(150, 19, 19);
+    /* border: 5px solid rgb(150, 19, 19); */
     padding: 0px;
     margin: 0px;
     position: absolute;
@@ -57,16 +58,13 @@ html, body {
     color: #b89662;
 }
 #getGyroAccess {
-    border: 10px solid rgb(122, 19, 150); 
+    /* border: 10px solid rgb(122, 19, 150);  */
 }
 #cardInterface {
     border: 20px solid rgb(19, 150, 21);
-    
 }
 #cardContainer {
     border: 5px solid rgb(24, 47, 84);
-    paddi
-    
 }
 .card {
     transform: scale(50%); 

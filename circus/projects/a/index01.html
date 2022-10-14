@@ -10,19 +10,36 @@
 <body>
     <div id="main-content">
 
-        <p id="main-text">Checking you are seeing this on mobile.</p>
+        <p id="main-text" class="bold">Checking you are seeing this on mobile.</p>
         
         <div id="getGyroAccess">
-            <div>This project utilizes your phone's gyroscope, please allow access.</div>
-            <button id="allowButton">Allow Access</button>
+            <div class="bold">This project utilizes your phone's gyroscope, please allow access.</div>
+            <button id="allowButton" class="bold">Allow Access</button>
             <p id="gyro-text"></p>
         </div>
-        <div id="sound-interface">
-            <div id="onoff">
-                <!-- <button type="button" id="on" name="button">🔊</button>
-                <button type="button" id="off" name="button">🔇</button> -->
-                <button type="button" id="onofftoggle" name="button">🔊</button>
+
+        <div id="instructions"><div>
+        <div id="cardInterface">
+            <button id="getCard" class="bold">Get Card</button>
+            <div id="cardContainer">
+                <div id="card" class="card">
+                        <div id="front" class="front side">
+                        </div>
+                        <div id="back side">
+                            <div id="cardName" class="bold name"></div>
+                    </div>
+                </div>
+                
             </div>
+        </div>
+
+        
+                <blockquote><div id="cardMeaning" class="font"></div></blockquote>
+
+        <div id="sound-interface" class="hidden">
+            <div id="onoff">
+            <button type="button" id="onofftoggle" name="button">🔊</button>
+            </div> 
     
             <div id="debug" class="hidden">
                 <p>alpha: <span id="alpha"></span></p>
@@ -43,24 +60,6 @@
             </div>
             <button type="button" id="debugbutton" name="button" class="hidden">🤖</button>
             <p id="hertzDisplay" class="hidden"></p>
-        </div>
-
-        <div id="cardInterface">
-            <div id="instructions"><div>
-                <button id="getCard">Get Card</button>
-            <div id="cardContainer">
-                <div id="card" class="card">
-                    <div id="sides">
-                        <div id="front" class="front side">
-                        </div>
-                        <div id="back">
-                        </div>
-                    </div>
-                </div>
-                <div id="cardName"></div>
-                <blockquote><div id="cardMeaning"></div></blockquote>
-            </div>
-
         </div>
     </div>
         
