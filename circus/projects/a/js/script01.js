@@ -1,100 +1,3 @@
-class Item {
-    constructor(name, state) {
-        this.name = name;
-        this.state = state;
-    }
-};
-class Card extends Item { // extend: Card is a subclass of item 
-    constructor (name, damage, state, rarity, image) {
-        super(name, state); // super() refers to the parent class item. The arguments are fed into the parent item
-        this.damage = damage; 
-        this.rarity = rarity;
-        this.image = image;
-    }
-};
-
-// all collectible cards
-const collectibles = [
-    // creating card objects
-    chariot = new Card ("The Chariot", 5, 1, 0, "url('js/cards/tarot01.png')"),
-    strength = new Card ("Strength", 5, 1, 0, "url('js/cards/tarot02.png')"),
-    highpriestess = new Card ("The High Priestess", 5, 1, 0, "url('js/cards/tarot03.png')"),
-    ninerings = new Card ("Nine of Rings", 5, 1, 0, "url('js/cards/tarot04.png')"),
-    magician = new Card ("The Magician", 5, 1, 0, "url('js/cards/tarot05.png')"),
-    threerings = new Card ("Three of Rings", 5, 1, 0, "url('js/cards/tarot06.png')"),
-    eightrings = new Card ("Eight of Rings", 5, 1, 0, "url('js/cards/tarot07.png')"),
-    fool = new Card ("The Fool", 5, 1, 0, "url('js/cards/tarot08.png')"),
-    twoswords = new Card ("Two of Swords", 5, 1, 0, "url('js/cards/tarot09.png')"),
-    world = new Card ("The World", 5, 1, 0, "url('js/cards/tarot10.png')"),
-    moon = new Card ("The Moon", 5, 1, 1, "url('js/cards/tarot11.png')"),
-    star = new Card ("The Star", 5, 1, 1, "url('js/cards/tarot12.png')"),
-    threewands = new Card ("Three of Wands", 5, 1, 1, "url('js/cards/tarot13.png')"),
-    death = new Card ("Death", 5, 1, 2, "url('js/cards/tarot14.png')"),
-    empress = new Card ("The Empress", 5, 1, 3, "url('js/cards/tarot15.png')"),
-];
-
-//card descriptions
-chariot.description = "The Chariot shows that you should pursue the plan with a structured and ordered approach.";
-strength.description = "Your resilience will greatly aid you, and your fearlessness means that you should have no issues speaking your mind.";
-highpriestess.description = "Her appearance in a reading can signify that it is time for you to listen to your intuition rather than prioritizing your intellect and conscious mind.";
-ninerings.description = "Realize you are free to create a secure, enduring, and satisfying lifestyle for yourself.";
-magician.description = "Remember that you are powerful, create your inner world, and the outer will follow.";
-threerings.description = "The Three of Rings is about spending quality time with people you cherish in your life.";
-eightrings.description = "You are coming to a realization that you must step away from what is familiar.";
-fool.description = "He inspires courage, for he understands that every day is a chance to open up new areas in your life, and with that comes a mixture of anticipation, wonder, awe and curiosity.";
-twoswords.description = "We find ourselves in a situation where we must make a choice...Neither seems particularly appealing.";
-world.description = "To encounter the World in your cards is to encounter a great unity and wholeness.";
-moon.description = "The moon's light can bring you clarity and understanding and you should allow your intuition to guide you through this darkness.";
-star.description = "To see this card is a message to have faith, for the universe will bless you and bring forth all that you need.";
-threewands.description = "The Three of Wands hints that you are creating a stable foundation for yourself.";
-death.description = "The Death card signals that one major phase in your life is ending, and a new one is going to start.";
-empress.description = "The Empress is associated with fertility, expression, creativity and nurturing among many other aspects.";
-
-// array for cards based on rarity 
-// all common cards
-var common = [];
-// all uncommon cards
-var uncommon = [];
-// all rare cards
-var rare = [];
-// all epic cards
-var epic = [];
-
-// push to array based on rarity
-for (let i of collectibles) {
-    if (i.rarity == 0) {
-        common.push(i.name);
-    } else if (i.rarity == 1) {
-        uncommon.push(i.name);
-    } else if (i.rarity == 2) {
-        rare.push(i.name);
-    } else if (i.rarity == 3) {
-        epic.push(i.name);
-    }
-}; 
-
-var cardCollection = []; 
-
-let cardFront = document.getElementById('front');
-let displaycardName = document.getElementById('cardName');
-let displaycardInfo = document.getElementById('cardMeaning');
-
-function gachaCard(name, state, image) {
-    let random = collectibles[Math.floor(Math.random() * collectibles.length)];
-    // random.state = 3;
-    cardCollection.push(random.name);
-    console.log(random);
-    console.log(cardCollection);
-    cardFront.style.backgroundImage = random.image;
-    displaycardName.innerHTML = random.name;
-    displaycardInfo.innerHTML = random.description;
-    // console.log(random.image)
-    // return random
-};
-
-gachaCard();
-
-
 let mainText = document.getElementById("main-text");
 let allowButton = document.getElementById("allowButton")
 
@@ -111,7 +14,7 @@ if(window.mobileAndTabletcheck()){
     allowButton.addEventListener("click", permission)
 
 }else{
-    mainText.innerHTML = "Please visit this page on a mobile phone";
+    mainText.innerHTML = "The stars do not align on this device. Choose another fate.";
 }
 
 // let on = document.getElementById("on");
@@ -198,10 +101,122 @@ let wasFacedownBefore = false;
 let playing = false;
 let oscillatorStarted = false;
 
+let instruct = document.getElementById('instructions');
+// let quote = document.getElementById('quote');
+// quote.style.display = "none";
+
+class Item {
+    constructor(name, state) {
+        this.name = name;
+        this.state = state;
+    }
+};
+class Card extends Item { // extend: Card is a subclass of item 
+    constructor (name, damage, state, rarity, image) {
+        super(name, state); // super() refers to the parent class item. The arguments are fed into the parent item
+        this.damage = damage; 
+        this.rarity = rarity;
+        this.image = image;
+    }
+};
+
+// all collectible cards
+let collectibles = [
+    // creating card objects
+    
+    chariot = new Card ("The Chariot", 5, 1, 0, "url('js/cards/tarot01.png')"),
+    strength = new Card ("Strength", 5, 1, 0, "url('js/cards/tarot02.png')"),
+    highpriestess = new Card ("The High Priestess", 5, 1, 0, "url('js/cards/tarot03.png')"),
+    ninerings = new Card ("Nine of Rings", 5, 1, 0, "url('js/cards/tarot04.png')"),
+    magician = new Card ("The Magician", 5, 1, 0, "url('js/cards/tarot05.png')"),
+    threerings = new Card ("Three of Rings", 5, 1, 0, "url('js/cards/tarot06.png')"),
+    eightrings = new Card ("Eight of Rings", 5, 1, 0, "url('js/cards/tarot07.png')"),
+    fool = new Card ("The Fool", 5, 1, 0, "url('js/cards/tarot08.png')"),
+    twoswords = new Card ("Two of Swords", 5, 1, 0, "url('js/cards/tarot09.png')"),
+    world = new Card ("The World", 5, 1, 0, "url('js/cards/tarot10.png')"),
+    moon = new Card ("The Moon", 5, 1, 1, "url('js/cards/tarot11.png')"),
+    star = new Card ("The Star", 5, 1, 1, "url('js/cards/tarot12.png')"),
+    threewands = new Card ("Three of Wands", 5, 1, 1, "url('js/cards/tarot13.png')"),
+    death = new Card ("Death", 5, 1, 2, "url('js/cards/tarot14.png')"),
+    empress = new Card ("The Empress", 5, 1, 3, "url('js/cards/tarot15.png')"),
+];
+
+//card descriptions
+chariot.description = "The Chariot shows that you should pursue the plan with a structured and ordered approach.";
+strength.description = "Your resilience will greatly aid you, and your fearlessness means that you should have no issues speaking your mind.";
+highpriestess.description = "Her appearance in a reading can signify that it is time for you to listen to your intuition rather than prioritizing your intellect and conscious mind.";
+ninerings.description = "Realize you are free to create a secure, enduring, and satisfying lifestyle for yourself.";
+magician.description = "Remember that you are powerful, create your inner world, and the outer will follow.";
+threerings.description = "The Three of Rings is about spending quality time with people you cherish in your life.";
+eightrings.description = "You are coming to a realization that you must step away from what is familiar.";
+fool.description = "He inspires courage, for he understands that every day is a chance to open up new areas in your life, and with that comes a mixture of anticipation, wonder, awe and curiosity.";
+twoswords.description = "We find ourselves in a situation where we must make a choice...Neither seems particularly appealing.";
+world.description = "To encounter the World in your cards is to encounter a great unity and wholeness.";
+moon.description = "The moon's light can bring you clarity and understanding and you should allow your intuition to guide you through this darkness.";
+star.description = "To see this card is a message to have faith, for the universe will bless you and bring forth all that you need.";
+threewands.description = "The Three of Wands hints that you are creating a stable foundation for yourself.";
+death.description = "The Death card signals that one major phase in your life is ending, and a new one is going to start.";
+empress.description = "The Empress is associated with fertility, expression, creativity and nurturing among many other aspects.";
+
+// array for cards based on rarity 
+// all common cards
+var common = [];
+// all uncommon cards
+var uncommon = [];
+// all rare cards
+var rare = [];
+// all epic cards
+var epic = [];
+
+// push to array based on rarity
+for (let i of collectibles) {
+    if (i.rarity == 0) {
+        common.push(i.name);
+    } else if (i.rarity == 1) {
+        uncommon.push(i.name);
+    } else if (i.rarity == 2) {
+        rare.push(i.name);
+    } else if (i.rarity == 3) {
+        epic.push(i.name);
+    }
+}; 
+
+let cardFront = document.getElementById('front');
+    // cardFront.style.display = "none";
+let cardBack = document.getElementById('back');
+    backCard = new Card ("back card", 5, 1, 0, "url('js/cards/tarotback.png')"),
+    cardBack.style.backgroundImage = backCard.image;
+    // cardBack.style.display = "block";
+let displaycardName = document.getElementById('cardName');
+let displaycardInfo = document.getElementById('cardMeaning');
+
+// let cardInterface = document.getElementsById('cardInterface');
+// cardInterface.style.display = "none";
+
+var cardCollection = []; 
+
+function gachaCard(name, state, image) {
+        let random = collectibles[Math.floor(Math.random() * collectibles.length)];
+        // random.state = 3;
+        cardCollection.push(random.name);
+        console.log(random);
+        console.log(cardCollection);
+        cardFront.style.backgroundImage = random.image;
+        displaycardName.innerHTML = random.name;
+        displaycardInfo.innerHTML = random.description;
+        // console.log(random.image)
+        // return random
+    };
+
+    gachaCard();
+
+
+
+            
+
 
 function permission() {
     document.getElementById("gyro-text").innerHTML = "getting access to gyroscope.";
-
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
         // (optional) Do something before API request prompt.
         DeviceMotionEvent.requestPermission()
@@ -219,19 +234,17 @@ function permission() {
                 
                 // make button appear
                 // attach event listemer to button to show instructions
+
+                
+
+
                 
                 document.getElementById('getCard').onclick = function() {
-                    
+                    // cardFront.style.display = "none";
+                    // cardBack.style.display = "block";
                     console.log('button pressed');
                     document.body.innerHTML += "show instructions ";
-
                     
-                    
-                    
-                    
-                    // make a function that calls all the sound stuff things
-                    // call the sound function here
-
                     let toggle = document.getElementById("onofftoggle");
 
                     oscillator.start(0);
@@ -256,9 +269,6 @@ function permission() {
                     }
                 }
 
-                console.log(playing);
-                 
-
                 window.addEventListener('deviceorientation', (event) => {
                     document.getElementById("alpha").innerHTML = event.alpha;
                     document.getElementById("beta").innerHTML = event.beta;
@@ -278,8 +288,8 @@ function permission() {
                     // jean solution
                     //add gachaCard solution
 
-                 
                     if (Math.abs(event.gamma) <= 10 && Math.abs(event.beta) > 170 ) {
+                        
                         // FACE DOWN
                         // oscillator.frequency.value = 400;
                         // hertzDisplay.innerHTML = Math.round(400)
@@ -299,12 +309,19 @@ function permission() {
                         if(faceDownTimer == undefined){
                             // document.body.innerHTML += "timeput started";
                             faceDownTimer = setTimeout(function() {
+                                // cardFront.style.display = "block";
                                     faceDownAlarm = true;
                                     clearInterval(faceDownTimer)
                                     faceDownTimer = undefined;
                                     oscillator.frequency.value = 900;
-                                    hertzDisplay.innerHTML = Math.round(900)
+                                    hertzDisplay.innerHTML = Math.round(900);
+                                    document.getElementById("card").style.display = "block";
+                                    
+                                    // cardFront.style.display = "block";
+                                    // cardBack.style.display = "none";
+                                    
                             }, 3000);
+                            
                         }
                         else if(faceDownAlarm == false){
                             oscillator.frequency.value = 400;
@@ -312,7 +329,6 @@ function permission() {
                         }
 
                     } else {
-                        
                         faceDownAlarm = false;
                         clearInterval(faceDownTimer)
                         faceDownTimer = undefined;
