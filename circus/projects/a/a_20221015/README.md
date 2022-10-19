@@ -1,6 +1,8 @@
-# ABC Browser Circus 🎪
+# ABC Browser Circus 🎪 Project A
 
-Hi! My name is Billie Jean - but you can call me Jean - and in this repository I will develop my work for the [ABC Browser Circus](https://abc.leoneckert.com) class. 
+My project explores interaction between devices, or more precisely, perceived communication created through reading tarot cards. The project is currently played through three mobile devices, with several tones indicating when and how the user should interact with the “cards.”
 
-[Check it out!](https://billiejean-regius.github.io/abc-student/) (fixing this link will be my first achievement 😜)
+Challenges and Shortcomings 
+I certainly struggled with understanding the correct structure, as most problems I have encountered are simple structural problems. Furthermore, I tend to commit to much time to developing concepts and frameworks for parts of the project that might not be incorporated into the final project. 
+For future iterations of this project, I will attempt to implement QR codes so that the system can feed information to various pages, without the devices being connected. 
 
