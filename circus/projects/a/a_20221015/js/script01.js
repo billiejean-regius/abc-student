@@ -17,18 +17,11 @@ if(window.mobileAndTabletcheck()){
     mainText.innerHTML = "The stars do not align on this device. Choose another fate.";
 }
 
-// let on = document.getElementById("on");
-// let off = document.getElementById("off");
-
-
 let hertzDisplay = document.getElementById("hertzDisplay");
 let minSlider = document.getElementById("min");
 let minLabel = document.getElementById("min-label");
 let maxSlider = document.getElementById("max");
 let maxLabel = document.getElementById("max-label");
-
-
-// let volumeRange = document.getElementById("volumeInput");
 
 let context = new AudioContext();
 let destination = context.destination;
@@ -42,11 +35,6 @@ let gain = context.createGain();
 oscillator.connect(gain);
 gain.connect(destination);
 
-
-
-// // initialise the volume:
-// // we divide the value from the slider by 100 to bring it back to
-// // a value between 0 and 1
 gain.gain.value = 1;
 
 let minHz = 65;
@@ -210,11 +198,6 @@ function gachaCard(name, state, image) {
 
     gachaCard();
 
-
-
-            
-
-
 function permission() {
     document.getElementById("gyro-text").innerHTML = "getting access to gyroscope.";
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
@@ -226,19 +209,7 @@ function permission() {
                 // document.getElementById("gyro-text").innerHTML = "Ready.";
                 document.getElementById("getGyroAccess").style.display = "none";
                 document.getElementById("sound-interface").style.display = "block";
-                // if(!oscillatorStarted){
-                //     oscillator.start(0);
-                //     oscillatorStarted = true;
-                // }
-                // gain.gain.value = 1;
-                
-                // make button appear
-                // attach event listemer to button to show instructions
-
-                
-
-
-                
+      
                 document.getElementById('getCard').onclick = function() {
                     // cardFront.style.display = "none";
                     // cardBack.style.display = "block";
@@ -274,52 +245,21 @@ function permission() {
                     document.getElementById("beta").innerHTML = event.beta;
                     document.getElementById("gamma").innerHTML = event.gamma;
 
-                    // let newHertz = map(Math.abs(event.gamma), 0, 90, minHz, maxHz);
-                    // // simple solution
-                    // if(Math.abs(event.beta) > 150){
-                    //     oscillator.frequency.value = 65;
-                    //     hertzDisplay.innerHTML = Math.round(65)
-
-                    // }else{
-                    //     oscillator.frequency.value = 400;
-                    //     hertzDisplay.innerHTML = Math.round(400)
-                    // }
-                    
-                    // jean solution
-                    //add gachaCard solution
-
+                    // link card perspective to the alpha, beta and gamma of the function
                     if (Math.abs(event.gamma) <= 10 && Math.abs(event.beta) > 170 ) {
-                        
-                        // FACE DOWN
-                        // oscillator.frequency.value = 400;
-                        // hertzDisplay.innerHTML = Math.round(400)
-                     
-                        // setInterval(function() {
-                        // oscillator.frequency.value = 400;
-                        // hertzDisplay.innerHTML = Math.round(400)
-                        // }, 3000);
-                        // document.body.innerHTML += "test"
                         if(!wasFacedownBefore){
-                            // hide instructions
                             document.body.innerHTML += "hide instructions ";
                             wasFacedownBefore = true;
-                            
                         }
 
                         if(faceDownTimer == undefined){
-                            // document.body.innerHTML += "timeput started";
                             faceDownTimer = setTimeout(function() {
-                                // cardFront.style.display = "block";
                                     faceDownAlarm = true;
                                     clearInterval(faceDownTimer)
                                     faceDownTimer = undefined;
                                     oscillator.frequency.value = 900;
                                     hertzDisplay.innerHTML = Math.round(900);
                                     document.getElementById("card").style.display = "block";
-                                    
-                                    // cardFront.style.display = "block";
-                                    // cardBack.style.display = "none";
-                                    
                             }, 3000);
                             
                         }
@@ -337,25 +277,11 @@ function permission() {
                     }
                     
                 });
-                // window.addEventListener('devicemotion', (event) => {
-                //     // console.log(`${event.acceleration.x} m/s2`);
-                //     document.getElementById("acc_x").innerHTML = event.acceleration.x;
-                //     document.getElementById("acc_y").innerHTML = event.acceleration.y;
-
-
-                // });
             }
         })
             .catch( console.error )
     } else {
-        // alert( "DeviceMotionEvent is not defined" );
-        // document.getElementById('doeSupported').innerText = 'still no';
         document.getElementById("gyro-text").innerHTML = "Cannot access your phone's gyroscope.";
 
     }
 }
-
-
-
-
-// btn.addEventListener( "click", permission );
