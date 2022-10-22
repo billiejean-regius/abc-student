@@ -7,6 +7,13 @@ let findWord = document.getElementById("findword");
 let replaceWord = document.getElementById("replaceword");
 let button = document.getElementById("replaceButton");
 
+let today = new Date();
+let birthYear = 1999;
+let birthMonth = 10;
+let birthDay = 26;
+
+
+
 
 // when the button in the popup window is clicked...
 button.addEventListener("click", ()=>{

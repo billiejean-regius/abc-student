@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "ABC Replacer APP",
+    "name": "Mini-project 4",
     "version": "1.0",
     "description": "Replace words with words.",
     "content_scripts": [

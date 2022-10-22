@@ -7,6 +7,12 @@ let findWord = document.getElementById("findword");
 let replaceWord = document.getElementById("replaceword");
 let button = document.getElementById("replaceButton");
 
+const calculateAge = (birthday) => {
+  const ageDifMs = Date.now() - new Date(birthday).getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+console.log(calculateAge('1999-10-26'));
 
 // when the button in the popup window is clicked...
 button.addEventListener("click", ()=>{

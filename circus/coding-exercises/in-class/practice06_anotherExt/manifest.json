@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Counting Forever",
+    "version": "1.0",
+    "description": "...forever ever?",
+    "action": {
+        "default_icon": "tent.png",
+        "default_popup": "popup/popup.html"  // optional
+      }
+    "permissions": {
+      "storage"
+    },
+    "background": {
+      "service_worker": "background.js"
+    }
+}
