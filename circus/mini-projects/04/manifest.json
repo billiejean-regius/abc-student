@@ -1,18 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "Mini-project 4",
+    "name": "Calculator",
     "version": "1.0",
-    "description": "Replace words with words.",
-    "content_scripts": [
-        {
-          "js": ["content.js"],
-          "matches": [
-            "<all_urls>"
-          ]
-        }
-    ],
+    "description": "A useful tool for basic arithmetic operations",
     "action": {
-        "default_title": "Click Me",   // optional, shown in tooltip
-        "default_popup": "popup/popup.html"  // optional
-      }
+        "default_icon": "tent.png",
+        "default_popup": "popup/popup.html" 
+      },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": ["tabs"]
 }
