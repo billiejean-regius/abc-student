@@ -1,11 +1,57 @@
-input{
-  display: inline;
-}
-
 body{
   width:300px;
   height: 400px;
   margin:0;
+  background-color: rgba(47, 47, 47, 0.9);
 }
-
+input{
+  display: inline;
+  border-radius: 20px;
+  outline: 0;
+  position: relative;
+  left: 5px;
+  top: 5px;
+  border: 0;
+  color: #495069;
+  background-color: 4px;
+  width: 60px;
+  height: 50px;
+  float: left;
+  margin: 5px;
+  font-size: 20px;
+  box-shadow: 0 4px rgba(207, 255, 240, 0.2);
+}
+input:hover{
+  background-color: #81c7cd;
+}
+.operator{
+  background-color: #81c7cd;
+  position: relative;
+}
+.operator:hover{
+  background-color: #e4bcfb;
+}
+#clear{
+  float: left;
+  position: relative;
+  display: block;
+  background-color: #e4bcfb;
+  margin-bottom: 15px;
+}
+#clear:hover{
+  background-color: #81c7cd;
+}
+#answer{
+  width: 270px;
+  font-size: 26px;
+  text-align: center;
+  background-color: #f1faeb;
+  float: left;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: black;
+}
+#answer:hover{
+  background-color: #e4bcfb;
+}
 
