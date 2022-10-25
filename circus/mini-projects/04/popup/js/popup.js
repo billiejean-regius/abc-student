@@ -1,41 +1,9 @@
-// let display = document.getElementById("countDisplay")
-// let button = document.getElementById("up");
-
-// let count = 0;
-
-// chrome.storage.sync.get(['myCount'], function(result) {
-//   console.log('Value currently is ' + result.key);
-//   count = result.count == undefined) {
-//     count = 0;
-//     chrome.storage.local.set({myCount: count})
-//   }
-
-// button.addEventListener("click", ()=> {
-//   count++;
-//   display.innerHTML = count;
-
-//   //tell bkg script increased count
-//   console.log("popup script: TELLING BGS about COUNT", count);
-//   chrome.runtime.sendMessage({message: "count went up"});
-// })
-
-
-// //ask background for current count
-// chrome.runtime.sendMessage({message: "remind me of the count"}, function(response) {
-//   display.innerHTML = response.theCount;
-//   count = response.theCount;
-// });
-
-//create calculator
-// enter button triggers bug
-
 
 let bugMessage = document.getElementById("bugged");
 let calcBtn = document.getElementById("calcButton");
 let answer = document.getElementById("answer");
 let equal = document.getElementById('equal');
 
-let count = 0; 
 
 // button.addEventListener("click", ()=> {
 //   count++;
@@ -44,22 +12,28 @@ let count = 0;
 let inputBtns = document.getElementsByClassName('inputValueButton');
 console.log(inputBtns);
 
-
-
-
-
 document.addEventListener('click', function handleClick(event) {
     thisValue = event.target.value;
-    console.log("background script: GOT VALUE:", thisValue) 
+    console.log("popup script: GOT VALUE:", thisValue) 
   });
 
-  //get calculation value => generate number of bugs?
-  function preloadImage(url)
-  {
-      var img = new Image();
-      img.src = "/test/example.jpg";
-  }
-  
+var bugArray = [
+    'css/assets/bugs/bug1.png', 
+    'css/assets/bugs/bug2.png', 
+    'css/assets/bugs/bug3.png', 
+    'css/assets/bugs/bug4.png', 
+    'css/assets/bugs/bug5.png', 
+    'css/assets/bugs/bug6.png'
+];
+
+function randBug(bugArray) {
+    return bugArray[Math.floor(Math.random()*bugArray.length)];
+}
+
+console.log(randBug(bugArray));
+
+
+
 let sw = screen.width;
 let sh = screen.height;
 
@@ -70,8 +44,8 @@ let sh = screen.height;
                 let ranX = Math.random()*sh;
                 let ranY = Math.random()*sh;
                 // let win1 = window.open("https://127.0.0.1:5500/abc-student/circus/mini-projects/04/popup/css/assets/index.html", "_blank", "width=500, height=500, left="+ranX+", top="+ranY);
-        
-            }, 3000 * i);
+                let bug1 = window.open(randBug(bugArray), "_blank", "width=190, height=210, left="+ranX+", top="+ranY);
+            }, 2000 * i);
        
         })(i);
         
@@ -80,3 +54,17 @@ let sh = screen.height;
 
 
 equal.addEventListener("click", getBugged);
+
+// const calc = {
+//     dispValue: '0',
+//     firstInput: null,
+//     waitForSecondInput: false,
+//     operator: null,
+//     };
+
+// function updateCalcDisplay() {
+//     const disp = document.querySelector('answer');
+//     disp.value = calc.dispValue; 
+// }
+// updateCalcDisplay();
+
