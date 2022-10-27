@@ -1,8 +1,11 @@
-body{
+/* body{
   width:300px;
   height: 400px;
   margin:0;
   background-color: rgba(255, 255, 255, 0.9);
+}
+.hidden {
+  display: none;
 }
 #clippy {
   margin: 90px auto;
@@ -10,7 +13,7 @@ body{
   width: 100px;
   height: 200px;
   position: relative;
-}
+} */
 /* #clippySpeaks {
   position: absolute;
   transform-origin: 0% 100%;
