@@ -1,8 +1,7 @@
-// index.js -> bundle.js
-var QRCode = require('qrcode')
-var canvas = document.getElementById('canvas')
+//https://www.sitepoint.com/get-url-parameters-with-javascript/
 
-QRCode.toCanvas(canvas, 'sample text', function (error) {
-  if (error) console.error(error)
-  console.log('success!');
-})
+
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let n = urlParams.get("name");
+alert("hi, "+n+"!");
