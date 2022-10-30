@@ -1,3 +1,48 @@
+// credit to chinooooo
+var innards = document.body.innerHTML;
+document.body.innerHTML += innards;
+
+$(window).scroll(function (e){
+  if ($(document).height() < $(window).scrollTop() + $(window).height() * 10){
+    document.body.innerHTML += innards;
+  }
+});
+
+console.log("LindaisHEREEEEE!!!");
+//bounding
+let tags = document.getElementsByTagName("a");
+
+function scrolled(){
+  console.log("helloooo");
+  const getOffset = (el) => {
+    const rect = el.getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top
+    };
+  }
+  // make red 
+  for(let i = 0; i < tags.length; i++){
+    if(tags[i].textContent != "" && getOffset(tags[i]).top != 0){
+       tags[i].style.color = "red";
+        //tags[i].innerHTML += getOffset(tags[i]).top;
+    }
+  
+    if(getOffset(tags[i]).top < 400){
+      console.log("i am done!");
+      tags[i].innerHTML = "this is done";
+    }
+  }
+  setTimeout(function(){
+  window.scrollBy(0, 2);
+  }, 10)
+}
+
+
+//document.addEventListener('click', scrolled);
+setInterval(scrolled,100);
+
+
 // create game banner 
 let divBanner = document.createElement('div');
 divBanner.setAttribute('id', 'gameBanner');
@@ -54,7 +99,7 @@ window.addEventListener('keydown', (event) => {
 function renderBanner(){
     ctx.fillStyle = "#000000";
     ctx.fillRect(0, 0, 600, 80);
-}
+} 
 function renderObject(){
     ctx.fillStyle = "#FF0000";
     ctx.fillRect(object.x, object.y, object.width, object.height);
@@ -70,53 +115,6 @@ function fun(){
 }
 
 requestAnimationFrame(fun);
-
-
-// credit to chinooooo
-var innards = document.body.innerHTML;
-document.body.innerHTML += innards;
-
-$(window).scroll(function (e){
-  if ($(document).height() < $(window).scrollTop() + $(window).height() * 10){
-    document.body.innerHTML += innards;
-  }
-});
-
-console.log("LindaisHEREEEEE!!!");
-//bounding
-let tags = document.getElementsByTagName("a");
-
-function scrolled(){
-  console.log("helloooo");
-  const getOffset = (el) => {
-    const rect = el.getBoundingClientRect();
-    return {
-      left: rect.left,
-      top: rect.top
-    };
-  }
-  // make red 
-  for(let i = 0; i < tags.length; i++){
-    if(tags[i].textContent != "" && getOffset(tags[i]).top != 0){
-       tags[i].style.color = "red";
-        //tags[i].innerHTML += getOffset(tags[i]).top;
-    }
-  
-    if(getOffset(tags[i]).top < 400){
-      console.log("i am done!");
-      tags[i].innerHTML = "this is done";
-    }
-  }
-  setTimeout(function(){
-  window.scrollBy(0, 2);
-  }, 10)
-}
-
-
-//document.addEventListener('click', scrolled);
-setInterval(scrolled,100);
-
-
 
 
 

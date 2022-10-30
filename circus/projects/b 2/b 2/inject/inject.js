@@ -1,11 +1,21 @@
+var innards = document.body.innerHTML;
+document.body.innerHTML += innards;
+
+// $(window).scroll(function (e){
+//   if ($(document).height() < $(window).scrollTop() + $(window).height() * 10){
+//     document.body.innerHTML += innards;
+//   }
+// });
+
 // create game banner 
-let divBanner = document.createElement('div');
-divBanner.setAttribute('id', 'gameBanner');
+// let divBanner = document.createElement('div');
+// divBanner.setAttribute('id', 'gameBanner');
 let banner = document.createElement('canvas')
+banner.setAttribute('id', 'gameBanner');
 let ctx = banner.getContext('2d');
 
-document.body.appendChild(divBanner);
-divBanner.appendChild(banner);
+// document.body.appendChild(divBanner);
+document.body.appendChild(banner);
 
 banner.width = 400;
 banner.height = 400;
@@ -53,8 +63,8 @@ window.addEventListener('keydown', (event) => {
 
 function renderBanner(){
     ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 0, 600, 80);
-}
+    ctx.fillRect(0, 0, 800, 80);
+} 
 function renderObject(){
     ctx.fillStyle = "#FF0000";
     ctx.fillRect(object.x, object.y, object.width, object.height);
@@ -70,17 +80,6 @@ function fun(){
 }
 
 requestAnimationFrame(fun);
-
-
-// credit to chinooooo
-var innards = document.body.innerHTML;
-document.body.innerHTML += innards;
-
-$(window).scroll(function (e){
-  if ($(document).height() < $(window).scrollTop() + $(window).height() * 10){
-    document.body.innerHTML += innards;
-  }
-});
 
 console.log("LindaisHEREEEEE!!!");
 //bounding
@@ -116,15 +115,13 @@ function scrolled(){
 //document.addEventListener('click', scrolled);
 setInterval(scrolled,100);
 
-
-
-
-
 //references 
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
 // https://stackoverflow.com/questions/23585320/how-to-move-object-with-keyboard-in-javascript
 // http://jsfiddle.net/medda86/y6WU9/
 // https://stackoverflow.com/questions/10445410/getting-the-x-and-y-coordinates-for-a-div-element#:~:text=If%20the%20element%20is%20in,')%3B%20let%20Y%3Dwindow.
+// https://dustinpfister.github.io/2019/03/14/canvas-position/
+// https://github.com/chjno/100days/tree/master/62_infinite_scroll
 
 
 

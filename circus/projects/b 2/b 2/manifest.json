@@ -15,7 +15,7 @@
     "content_scripts": [
       {
           "matches": ["*://*.google.com/*", "http://*/*", "https://*/*"],
-          "js": ["inject/jquery.js", "inject/inject.js"],
+          "js": ["inject/inject.js", "inject/jquery.js"],
           "css": ["inject/style.css"]
       }
       ],
