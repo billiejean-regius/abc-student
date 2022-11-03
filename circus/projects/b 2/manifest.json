@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Frogger",
+    "version": "1.0",
+    "description": "Ribbit, ribbit",
+    "action": {
+        "default_icon": "flipnote.png",
+        "default_popup": "popup/popup.html" 
+      },
+    "permissions": ["tabs", "scripting", "activeTab", "storage", "unlimitedStorage"],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "*.png",
+          "*.mp3"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ],
+    "content_scripts": [
+      {
+          "matches": ["*://*.google.com/*", "http://*/*", "https://*/*", "<all_urls>"],
+          "js": ["inject/inject.js"],
+          "css": ["inject/style.css"]
+      }
+      ],
+      "host_permissions": ["<all_urls>"]
+}

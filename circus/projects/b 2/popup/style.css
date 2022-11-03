@@ -1,0 +1,10 @@
+/* popup css */
+input{
+    display: inline;
+  }
+  
+  body{
+    width:300px;
+    height: 400px;
+    margin:0;
+  }
