@@ -4,7 +4,7 @@ const port = 3000
 
 
 // different routes: url/something/something
-
+app.arguments(express.statoc('public'));
 app.get('/', (req, res) => {
   res.send('Bye World!')
 })
