@@ -2,14 +2,6 @@ body {
     margin: 0;
     padding: 0;
 }
-#mainContent {
-    margin: 0;
-    padding: 0;
-}
-.content {
-    margin: 0;
-    padding: 0;
-}
 
 #scrollVert {
     position: fixed;
@@ -35,11 +27,56 @@ body {
     height: 50px;
     background-color: lightskyblue;
 }
-#parentPage {
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+} */
+.sliderWrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4000px;
     display: flex;
-    /* content: "";
-    display: table;
-    clear: both; */
+    will-change: transform;
+    background-color: black;
+}
+.sliderItem {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+.pages {
+    position: relative;
+    left: 0%;
+    width: 98%;
+    height: 100%;
+    /* background-size: cover;
+    background-position: center; */
+    background-color: aquamarine;
+}
+#mainContent {
+    margin: 0;
+}
+.content {
+    margin: 0;
+}
+
+
+/* .parentPage {
+    display: flex;
+    left: 0;
+    top: 0;
     width: 400vw;
     height: 100%;
     margin: 0;
@@ -47,10 +84,8 @@ body {
     text-align: center;
 }
 .childPages {
-    position: relative;
-    /* float: left; */
     width: 100vw;
     height: 100%;
     padding: 0;
     vertical-align: middle;
-}
+} */
