@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#mainContent {
+    margin: 0;
+    padding: 0;
+}
+.content {
+    margin: 0;
+    padding: 0;
+}
+
+#scrollVert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    background-color: lightgreen;
+}
+.stretchPages {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#scrollHrzn {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    background-color: lightskyblue;
+}
+#parentPage {
+    display: flex;
+    /* content: "";
+    display: table;
+    clear: both; */
+    width: 400vw;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.childPages {
+    position: relative;
+    /* float: left; */
+    width: 100vw;
+    height: 100%;
+    padding: 0;
+    vertical-align: middle;
+}

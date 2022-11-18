@@ -174,7 +174,6 @@ function playFrogger() {
         webPage02.appendAfter(webPage01);
         console.log("web page two moved below");
       }
-
       a = getOffset(froggy);
       for (let i = 0; i < tags.length; i++) {
         tags[i].style.color = "red";
