@@ -45,6 +45,11 @@ body {
     height: 50px;
     background-color: lightskyblue;
 }
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+} */
 .sliderWrap {
     position: fixed;
     top: 0;
@@ -53,6 +58,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    /* border: 1px solid black; */
 }
 .slider {
     position: absolute;
@@ -68,9 +74,6 @@ body {
     position: relative;
     flex: 1;
     overflow: hidden;
-}
-.item {
-    width: 100%;
 }
 .pages {
     position: relative;

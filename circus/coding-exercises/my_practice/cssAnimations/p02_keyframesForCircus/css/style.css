@@ -1,0 +1,70 @@
+:root {
+    --topOfHand: 10px;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  #cardContainer {
+    width: 500px;
+    height: 500px;
+    background-color: azure;
+  }
+.hand {
+    position: absolute;
+    background-color: rgb(255, 174, 0);
+}
+#hand {
+    /* animation-name: card; */
+    /* animation-duration: 10s; */
+
+    /* animation: hand 20s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: both; */
+}
+.card {
+    position: absolute;
+    /* width: 150px;
+    height: 250px; */
+    background-color: aqua;
+}
+#card {
+    /* animation-name: card; */
+    /* animation-duration: 10s; */
+
+    /* animation: card 8s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: both; */
+}
+
+@keyframes card {
+   0% {
+    top: var(--topOfCard);
+   }
+   100% {
+    top: 100px;
+    }
+}
+
+@keyframes hand {
+    0% {
+     top: var(--topOfHand);
+ 
+    }
+    40% {
+        top: 100px;
+       }
+    60% {
+        top: 100px;
+    }
+    100% {
+        top: var(--topOfHand);
+     }
+ }

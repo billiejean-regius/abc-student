@@ -19,14 +19,11 @@ let webPage02 = document.createElement('div');
 webPage02.setAttribute('id', 'webPage02');
 let webPage03 = document.createElement('div');
 webPage03.setAttribute('id', 'webPage03');
-let webPage04 = document.createElement('div');
-webPage03.setAttribute('id', 'webPage04');
 
 let webPage = [
     webPage01,
     webPage02,
     webPage03,
-    webPage04,
 ];
 
 document.body.append(scrollVert, scrollHrzn);
@@ -86,7 +83,6 @@ function scrollHrznPage() {
     webPage01.innerHTML = innards;
     webPage02.innerHTML = innards;
     webPage03.innerHTML = innards;
-    webPage04.innerHTML = innards;
 
     let sliderWrap = document.createElement('div');
         sliderWrap.classList.add('sliderWrap');
@@ -101,7 +97,7 @@ function scrollHrznPage() {
     let items = [];
     // console.log(webPage)
 
-    for(let i = 1; i < 5; i++) {
+    for(let i = 1; i < 4; i++) {
         let sliderItem = document.createElement('div');
         sliderItem.setAttribute("class", "item");
         slider.append(sliderItem);
@@ -113,13 +109,13 @@ function scrollHrznPage() {
     sliderWrap.appendChild(slider);
     document.body.append(sliderWrap);
     
-    // items.forEach(item => {
-    //     let clone = item.cloneNode(true);
-    //     clone.classList.add('clone');
-    //     slider.append(clone);
-    //     clones.push(clone);
-    //     items.push(clone);
-    // });
+    items.forEach(item => {
+        let clone = item.cloneNode(true);
+        clone.classList.add('clone');
+        slider.append(clone);
+        clones.push(clone);
+        items.push(clone);
+    });
 
     console.log(items);
     console.log(document.querySelectorAll('.item'))
@@ -159,7 +155,7 @@ function scrollHrznPage() {
                 window.scrollTo(0, intervalCount);
                 console.log("calc thing")
             } else if(getOffset(getItems[2]).left <= 0) {
-                getItems[0].appendAfter(getItems[3]); 
+                getItems[0].appendAfter(getItems[5]); 
                 console.log("is this working?");
                 window.scrollTo(0, intervalCount);
                 // window.scrollTo({top: sliderWidth - clonesWidth -1})
