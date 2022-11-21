@@ -179,6 +179,8 @@ function myfunction(el,d) {
   alert("you swiped on element with id '"+el+"' to "+d+" direction");
 }
 
+detectswipe('slides',myfunction);
+
 
 
 
