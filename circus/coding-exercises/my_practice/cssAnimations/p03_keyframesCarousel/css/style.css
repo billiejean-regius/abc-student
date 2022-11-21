@@ -1,0 +1,165 @@
+:root {
+  --topOfSeat: 100px;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+@media only screen and (min-width: 961px) { 
+    /* deskptop vars */
+}
+@media only screen and (min-width:481px) and (max-width: 960px) {
+    /* tablet vars */
+    
+}
+@media only screen and (max-width: 480px) {
+    /* mobile vars */
+    .slides {
+        position: absolute;
+        width: 95%;
+        height: 100%;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: rgb(167, 142, 210);
+    }
+    .carousel {
+        position: relative;
+        width: 80%;
+        height: 65%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: rgb(90, 120, 218);
+    }
+    .info {
+        position: absolute;
+        width: 80%;
+        height: 25%;
+        left: 50%;
+        transform: translate(-50%);
+        margin-top: 25px;
+        background-color: rgb(90, 120, 218);
+        text-align: center;
+    }
+    .title {
+        position: relative;
+        display: table;
+        width: 90%;
+        height: 40%;
+        /* top: 10%; */
+        margin-top: 20px;;
+        left: 50%;
+        transform: translate(-50%);
+        background-color: rgb(211, 162, 58);
+        text-align: center;
+    }
+    .titleText {
+        position: relative; 
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+    .link {
+        position: relative;
+        display: table;
+        width: 60%;
+        height: 30%;
+        left: 50%;
+        transform: translate(-50%);
+        margin-top: 15px;;
+        background-color: rgb(211, 162, 58);
+        text-align: center;
+    }
+    .linkText {
+        position: relative; 
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+   
+}
+/* #carousel {
+    position: fixed;
+    width: 40%;
+    height: 400px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(90, 120, 218);
+} */
+.beams {
+    position: absolute;
+    width: 8%;
+    height: 50%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    /* background-color: rgb(57, 184, 84); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;;
+    
+    /* transform:scaleY(130%); */
+}
+.seats {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    /* background-color: rgb(211, 162, 58); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;;
+
+    animation: seats 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* animation-fill-mode: both; */
+}
+
+@keyframes seats {
+    0% {
+     top: var(--topOfSeat);
+    }
+    50% {
+        top: 200px; 
+        /* need to calculate the distance between the 
+        top of the screen to the bottom of the 
+        carousel to determine how far this can go */
+    }
+    100% {
+     top: var(--topOfSeat);
+     }
+ }
+
+
+
+
+#hand {
+    /* animation-name: card; */
+    /* animation-duration: 10s; */
+
+    /* animation: hand 20s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: both; */
+}
+
+@keyframes card {
+   0% {
+    top: 0px;
+   }
+   100% {
+    top: 100px;
+    }
+}
+

@@ -1,0 +1,18 @@
+#clippy {
+    position: fixed;
+    top: 60%;
+    left: 80%;
+    width: 100px;
+    height: 175px;
+    background-color: rgb(86, 177, 132);
+  }
+  
+  #chatClient {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background-color: rgb(86, 122, 177);
+  }
