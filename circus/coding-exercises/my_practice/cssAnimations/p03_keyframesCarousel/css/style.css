@@ -26,6 +26,7 @@ html, body {
         left: 50%;
         transform: translate(-50%);
         background-color: rgb(167, 142, 210);
+        overflow: hidden;
     }
     .carousel {
         position: relative;
