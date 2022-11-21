@@ -20,7 +20,7 @@ html, body {
 @media only screen and (max-width: 480px) {
     /* mobile vars */
     .slides {
-        position: absolute;
+        position: fixed;
         width: 95%;
         height: 100%;
         left: 50%;
