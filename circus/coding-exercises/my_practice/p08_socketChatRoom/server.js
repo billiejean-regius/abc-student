@@ -25,7 +25,6 @@ io.on('connection', (socket) => { // general even listener for any socket connec
       });
       socket.on("message", (data) => {
         console.log(data);
-        io.emit("incoming", data);
       })
   });
 
