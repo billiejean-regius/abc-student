@@ -9,11 +9,11 @@ const io = new Server(server);
 
 app.use(express.static('public'));
 
-console.log("I am working");
-
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+
+let connected = [];
 
 // sort of a socket.io route
 // is someone connects, this event listener

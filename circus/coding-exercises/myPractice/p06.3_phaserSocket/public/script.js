@@ -2,7 +2,15 @@ console.log("I am working");
 
 let socket = io();
 
+let myID; 
 let serverUsers = [];
+
+//receiveMyId
+socket.on('singleId', function(msg) {
+    console.log("My ID:", msg.value)
+    document.body.append(msg.value)
+    myId = msg.value
+  });
 
 
 let config = {
