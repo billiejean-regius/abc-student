@@ -7,7 +7,7 @@ let testMode = true;
 //receiveMyId
 socket.on('singleId', function(msg) {
   console.log("My ID:", msg.value)
-  document.body.append(msg.value)
+  // document.body.append(msg.value)
   myId = msg.value
 });
 // here I receive updated whenever someone disconnects or connects to the socket server.
@@ -15,7 +15,6 @@ socket.on('updatedClients', function(msg) {
   console.log("updatedClients", msg)
   others = msg.value
 });
-
 
 let all = document.getElementById("all");
 let allbutme = document.getElementById("allbutme");
@@ -36,7 +35,11 @@ allbutme.addEventListener("click", () => {
 
 //if I receive that someone pressed button 1: 
 socket.on("button1", ()=> {
-  document.body.style.backgroundImage = "url('assets/bkg.jpeg')"
+  document.body.style.backgroundImage = "url('assets/spaceBkg.png')"
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "100%";
+  document.body.style.margin = "0";
+  document.body.style.padding = "0";
 })
 
 //textToAllButMe
@@ -69,22 +72,28 @@ function getRandomSocketIDthatIsAlsoConnected(){
   return others[ranIDX];
 }
 
+let inputMessage = document.createElement('input');
+inputMessage.setAttribute("type", "text");
+inputMessage.setAttribute("placeholder", "Type youre message here");
+
+let inputSubmit = document.createElement('button');
+inputSubmit.innerHTML = "Send Message";
+
+document.body.append(inputMessage, inputSubmit);
+
 randomSingle.addEventListener("click", () => {
   //tell socket server
-  
   i++
   msg = prologue[i];
   console.log(i);
   if (i === prologue.length) {
     i = -1;
   }
-
-
   let recipientId = getRandomSocketIDthatIsAlsoConnected();
   console.log("sending", msg)
   console.log("to", recipientId)
   console.log("---")
-  socket.emit("textToSingle", {id: recipientId , value: msg});
+  socket.emit("textToSingle", {id: recipientId , value: msg})
   
 })
 
@@ -95,9 +104,51 @@ socket.on("text", (msg)=> {
   document.body.innerHTML += msg.value;
 });
 
-//button1ToSingle
+
+// btn1Single.addEventListener("click", () => {
+//   //tell socket server
+  
+// })
+inputSubmit.addEventListener("click", () => {
+  inputMessage.innerHTML = "";
+
+  let msg = inputMessage.value;
+  console.log(inputMessage.value);
+  let recipientId = getRandomSocketIDthatIsAlsoConnected();
+  socket.emit("button2ToSingle", {id: recipientId , value: msg});
+  console.log("sending", msg)
+  console.log("to", recipientId)
+  console.log("---")
+})
+
+
+socket.on("button2", (msg)=> {
+  console.log("You got mail");
+  let container = document.createElement("div");
+  container.setAttribute("id", "container");
+  // container.style.border = "1px solid black";
+  container.style.backgroundImage = "url('assets/mail.png')"
+  container.style.backgroundRepeat = "no-repeat";
+  container.style.backgroundSize = "100%";
+  container.style.position = "absolute";
+  container.style.width = "300px";
+  container.style.height = "175px";
+  container.style.top = "50%";
+  container.style.left = "50%";
+  container.style.transform = "translate(-50%, -50%)";
+
+  document.body.append(container);
+  // container.innerHTML = msg.value;
+  console.log(socket.id, msg.value)
+})
+
+
+
+
 //boolrean1ToAllButMe
 //valueToAllButMe 
+
+
 
 
 
