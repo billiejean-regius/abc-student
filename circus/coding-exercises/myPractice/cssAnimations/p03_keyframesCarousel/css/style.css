@@ -10,6 +10,12 @@ html, body {
     align-items: center;
     text-align: center;
 }
+#myElement {
+    background: silver;
+    height: 300px;
+    text-align: center;
+    font: 30px/300px Helvetica, Arial, sans-serif;
+  }
 @media only screen and (min-width: 961px) { 
     /* deskptop vars */
 }
