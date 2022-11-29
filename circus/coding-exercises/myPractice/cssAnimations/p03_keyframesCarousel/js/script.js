@@ -157,12 +157,14 @@ let slider = new Hammer(slideContainer);
 //   // slideContainer.textContent = ev.type +" gesture detected.";
   
 // });
-slider.on("panleft" && "press", function(ev) {
-  console.log("panleft");
+slider.on("panleft", function(ev) {
+  let panleft = "panleft";
+  console.log(panleft);
   // slides.style.left = + 10 + "px";
 });
 slider.on("panright", function(ev) {
   console.log("panright")
+  // slides.style.left = - 10 + "px";
 });
 
 

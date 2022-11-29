@@ -89,6 +89,8 @@ const connect = () => {
         ws.close();
         instance = null;
         console.log(`Client ${ws.id} has disconnected!`);
+        ws.clients.forEach(function each(client) {
+        });
         
         disconnectButton.style.display = "none";
         connectButton.style.display = "block";
