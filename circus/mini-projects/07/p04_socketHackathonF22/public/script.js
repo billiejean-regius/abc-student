@@ -90,15 +90,19 @@ randomSingle.addEventListener("click", () => {
 })
 
 //if I receive that someone pressed button 1: 
-socket.on("text", (msg)=> {
+// socket.on("text", (msg)=> {
   
-  console.log(socket.id, msg.value)
-  document.body.innerHTML += msg.value;
-});
+//   console.log(socket.id, msg.value)
+//   document.body.innerHTML += msg.value;
+// });
 
 
 // btn1Single.addEventListener("click", () => {
 //   //tell socket server
+
+const mailAudio = new Audio("gotMail.mp3");
+mailAudio.loop = false;
+
 let inputMessage = document.createElement('input');
 inputMessage.setAttribute("type", "text");
 inputMessage.setAttribute("placeholder", "Type youre message here");
@@ -115,19 +119,15 @@ inputSubmit.addEventListener("click", () => {
   let msg = inputMessage.value;
   console.log(inputMessage.value);
   let recipientId = getRandomSocketIDthatIsAlsoConnected();
-  socket.emit("button2ToSingle", {id: recipientId , value: msg});
+  socket.emit("textToSingle", {id: recipientId, value: msg});
   console.log("sending", msg)
   console.log("to", recipientId)
   console.log("---")
 })
-//boolrean1ToAllButMe
-const mailAudio = new Audio("gotMail.mp3");
-    mailAudio.loop = false;
-    document.body.insertBefore(mailAudio, document.body.firstElementChild);
 
-socket.on("button2", (msg)=> {
-  console.log("You got mail");
-  console.log(socket.id, msg.value)
+socket.on("text", (msg) => {
+  console.log(msg);
+  mailAudio.play();
   let container = document.createElement("div");
   container.setAttribute("id", "container");
   // container.style.border = "1px solid black";
@@ -135,49 +135,61 @@ socket.on("button2", (msg)=> {
   container.style.backgroundRepeat = "no-repeat";
   container.style.backgroundSize = "100%";
   container.style.position = "absolute";
+  
+
   container.style.width = "300px";
   container.style.height = "175px";
-  container.style.top = "50%";
-  container.style.left = "50%";
-  container.style.transform = "translate(-50%, -50%)";
+  container.style.top = Math.random()*80+"%";
+  container.style.left = Math.random()*80+"%";
+  // container.style.transform = "translate(-50%, -50%)";
 
   document.body.append(container);
-  // container.innerHTML = msg.value;
-  console.log(socket.id, msg.value)
+  // container.innerHTML += msg.value;
+ 
+  // document.body.insertBefore(mailAudio, document.body.firstElementChild);
 
-
-  container.addEventListener("click", (msg) => {
-    container.style.backgroundImage = "";
-    mailAudio.play();
-    console.log("mail clicked");
-    container.innerHTML += msg.value;
-  })
+  container.addEventListener("click", () => {
+      container.style.backgroundImage = "";
+      container.style.pointerEvents = "none";
+      console.log("mail clicked");
+      container.innerHTML += msg.value;
+    })
 })
 
-//valueToAllButMe 
-// let range = document.createElement('input');
-// range.setAttribute('type', 'range');
-// range.setAttribute('min', '1');
-// range.setAttribute('max', '100');
-// range.setAttribute('value', '50');
-// range.setAttribute('class', 'slider');
 
-// let submitRange = document.createElement('button');
-// submitRange.innerHTML = "Submit";
 
-// document.body.append(range, submitRange);
 
-// submitRange.addEventListener("click", () => {
-//   //tell socket server
-//   let number = 2;
+// const mailAudio = new Audio("gotMail.mp3");
+//     mailAudio.loop = false;
+//     document.body.insertBefore(mailAudio, document.body.firstElementChild);
 
-//   socket.emit('valueToAllButMe', {value: number});
-//   console.log("button clicked");
-// })
+// socket.on("button2", (msg)=> {
+//   console.log("You got mail");
+//   console.log(socket.id, msg.value)
+//   let container = document.createElement("div");
+//   container.setAttribute("id", "container");
+//   // container.style.border = "1px solid black";
+//   container.style.backgroundImage = "url('assets/mail.png')"
+//   container.style.backgroundRepeat = "no-repeat";
+//   container.style.backgroundSize = "100%";
+//   container.style.position = "absolute";
+//   container.style.width = "300px";
+//   container.style.height = "175px";
+//   container.style.top = "50%";
+//   container.style.left = "50%";
+//   container.style.transform = "translate(-50%, -50%)";
 
-// //if I receive that someone pressed button 1: 
-// socket.on('valueToAll', (number)=> {
-//   console.log("value received:", number.value);
+//   document.body.append(container);
+//   // container.innerHTML = msg.value;
+//   console.log(socket.id, msg.value)
+
+
+//   container.addEventListener("click", (msg) => {
+//     container.style.backgroundImage = "";
+//     mailAudio.play();
+//     console.log("mail clicked");
+//     container.innerHTML += msg.value;
+//   })
 // })
 
 

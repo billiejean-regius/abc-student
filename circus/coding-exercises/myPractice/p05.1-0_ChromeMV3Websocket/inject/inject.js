@@ -16,15 +16,6 @@ document.body.append(connectButton, disconnectButton, sendMessage);
 disconnectButton.style.display = "none";
 sendMessage.style.display = "none";
 
-// function toggleVisibility() {
-//     let elem = document.getElementById("myDIV");
-//     if (elem.style.display === "none") {
-//         elem.style.display = "block";
-//     } else {
-//         elem.style.display = "none";
-//     }
-// }
-
 const extension = {
     count: 0,
     disconnected: false,
@@ -56,14 +47,13 @@ const connect = () => {
     };
 
     ws.id = ws.getUniqueID();
-    console.log(`New client connected with id: ${ws.id}`);
+    // console.log(`New client connected with id: ${ws.id}`);
     //ws.sendText("test");
 
-    
-    
     const onOpen = () => {
         instance = ws;
-        console.log('###websocket:connected', instance);
+        // console.log('###websocket:connected', instance);
+        console.log(`Client ${ws.id} has connected!`);
         ws.send('it works!');
         return resolve(ws);
     };
@@ -75,7 +65,7 @@ const connect = () => {
     };
 
     const onClose = () => {
-        console.log('###websocket:disconnected');
+        console.log(`websocket has disconnected`);
         instance = null;
         // reconnect is happening in the alarm callback
     };
@@ -89,14 +79,18 @@ const connect = () => {
         ws.close();
         instance = null;
         console.log(`Client ${ws.id} has disconnected!`);
-        ws.clients.forEach(function each(client) {
-        });
         
         disconnectButton.style.display = "none";
         connectButton.style.display = "block";
     });
 
+    // ws.clients.forEach(function each(client) {
+    //     client.send("blah blah blah");
+    // });
+
+
     sendMessage.addEventListener('click', () => {
+        console.log("button clicked");
         ws.onmessage = ({data}) => {
             console.log(`Client ${ws.id}: ${data}`);
             ws.clients.forEach(function each(client) {

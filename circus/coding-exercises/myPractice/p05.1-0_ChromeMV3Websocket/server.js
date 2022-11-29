@@ -21,13 +21,13 @@ let WebSocketServer = require('ws').Server;   // webSocket library
 // configure the webSocket server:
 const wssPort = process.env.PORT || 3000;             // port number for the webSocket server
 const wss = new WebSocketServer({port: wssPort}); // the webSocket server
-let clients = new Array;         // list of client connections
-
+let clients = [];   // list of client connections
 
 // ------------------------ webSocket Server functions
 function handleConnection(client, request) {
 	console.log("New Connection");        // you have a new client
 	clients.push(client);    // add this client to the clients array
+  // console.log(clients);
 
 	function endClient() {
 		// when a client closes its connection
@@ -56,7 +56,7 @@ function broadcast(data) {
     for (c in clients) {
         clients[c].send(JSON.stringify(data));
     }
-}
+};
 
 // listen for clients and handle them:
 wss.on('connection', handleConnection);
