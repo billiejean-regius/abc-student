@@ -9,9 +9,9 @@ const port = process.env.PORT;
 
 app.use(express.static('inject'));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 // sort of a socket.io route
 // is someone connects, this event listener
@@ -30,6 +30,12 @@ io.on('connection', (socket) => { // general even listener for any socket connec
         io.emit("incoming", data);
       })
   });
+
+ 
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
 
  
 
