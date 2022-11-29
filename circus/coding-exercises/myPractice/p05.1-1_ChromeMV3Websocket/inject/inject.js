@@ -1,6 +1,6 @@
 // <button type="submit" id="test">Click to test</button>
 
-let socket = io("https://abc-socket-hackathon.glitch.me"); // "https://abc-socket-hackathon.glitch.me"
+let socket = io("https://websocketmmo.glitch.me"); // "https://abc-socket-hackathon.glitch.me"
 
 let connectButton = document.createElement('button');
 connectButton.setAttribute("id", "connectButton");
