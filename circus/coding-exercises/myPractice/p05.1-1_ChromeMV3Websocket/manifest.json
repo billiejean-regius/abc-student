@@ -20,9 +20,11 @@
     ],
     "content_scripts": [
       {
-          "matches": ["*://*.google.com/*", "http://*/*", "https://*/*", "<all_urls>"],
-          "js": ["inject/inject.js", "inject/socket.io.js"],
-          "css": ["inject/style.css"]
+        "matches": ["*://*.google.com/*", "http://*/*", "https://*/*", "<all_urls>"],
+        "js": ["inject/inject.js"],
+        "css": ["inject/style.css"],
+        "run_at": "document_start",
+        "all_frames": true
       }
       ],
     "host_permissions": ["<all_urls>"]
