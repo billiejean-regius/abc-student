@@ -7,10 +7,6 @@ body {
     overflow: hidden;
     /* overflow-y: scroll; */
 }
-p {
-    margin: 0;
-    padding: 0;
-}
 #gameMap {
     position: relative;
     /* width: 4000px;
@@ -49,6 +45,6 @@ p {
     background-color: rgb(83, 160, 118);
 }
 .flower {
-    position: absolute;
+    position: relative;
     background-color: rgb(242, 191, 220);
 }
