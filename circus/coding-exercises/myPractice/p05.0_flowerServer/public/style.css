@@ -40,7 +40,7 @@ p {
     background-color: rgb(109, 109, 225);
 }
 .otherPlayer {
-    position: relative;
+    position: absolute;
     /* width: 10px;
     height: 10px; */
     /* top: 30%;
