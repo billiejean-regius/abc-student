@@ -1,26 +1,72 @@
-/* .playDivs {
-    
-} */
+
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
     /* overflow-y: scroll; */
 }
 p {
     margin: 0;
     padding: 0;
 }
+#playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 115px;
+    height: 49px;
+    border: 0px;
+    background: transparent;
+    z-index: 1000;
+}
+#loader {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 45px;
+    /* background-color: pink; */
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+}
+#loader:hover {
+    background-image: url(assets/startButton.png);
+}
+#loadScreen {
+    position: relative;
+    /* width: 4000px;
+    height: 4000px; */
+    background-color: aliceblue;
+    /* width: 200px;
+    height: 200px; */
+    /* background-size: 100%; */
+    /* background-position: center; */
+    background-image: url(assets/world/grassMapMed.png);
+    background-repeat: no-repeat;
+    /* overflow: hidden; */
+    top: 0px;
+    left: 0px;
+
+    margin-left: 50%;
+    margin-top: 50vh;
+    transform: translate(-50%, -50%);
+}
+
 #gameMap {
     position: relative;
     /* width: 4000px;
     height: 4000px; */
     background-color: aliceblue;
-    background-image: url(assets/bkg.test1.png);
     /* width: 200px;
     height: 200px; */
     /* background-size: 100%; */
     /* background-position: center; */
+    background-image: url(assets/world/grassMapMed.png);
     background-repeat: no-repeat;
     /* overflow: hidden; */
     top: 0px;
@@ -30,25 +76,228 @@ p {
     margin-top: 50vh;
     /* transform: translate(-50%, -50%); */
 }
+.flower {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: rgb(242, 191, 220); */
+}
 .mainPlayer {
     position: fixed;
+    pointer-events: none;
     /* width: 10px;
     height: 10px; */
     top: 50%;
     left: 50%;
     /* transform: translate(-50%, -50%); */
-    background-color: rgb(109, 109, 225);
+    /* background-color: rgba(109, 109, 225, 0.4); */
+    /* border: solid 1px blue; */
 }
 .otherPlayer {
     position: absolute;
+    pointer-events: none;
     /* width: 10px;
     height: 10px; */
     /* top: 30%;
     left: 50%;
     transform: translate(-50%, -50%); */
-    background-color: rgb(83, 160, 118);
+    /* background-color: rgb(83, 160, 118); */
 }
-.flower {
+/* .collisionMarker {
     position: absolute;
-    background-color: rgb(242, 191, 220);
+    background-color: rgba(255, 0, 0, 0.5);
+} */
+.myMarker {
+    pointer-events: none;
+    position: absolute;
+    /* background-color: rgba(61, 8, 132, 0.5); */
 }
+.otherMarker {
+    pointer-events: none;
+    position: absolute;
+    /* background-color: rgba(255, 0, 0, 0.5); */
+}
+/* .playerPanel {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    background-color: rgba(0, 255, 0, 0.4);
+} 
+*/
+.myPanel {
+    position: relative;
+    pointer-events: none;
+    width: 70px;
+    height: 70px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    /* background-color: rgba(117, 218, 244, 0.4); */
+}
+.otherPanel {
+    position: relative;
+    pointer-events: none;
+    width: 70px;
+    height: 70px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    /* background-color: rgba(0, 255, 0, 0.4); */
+}
+/* .reactTop {
+    position: absolute;
+    width: 20px;
+    height: 24px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(24, 167, 129, 0.297);
+} */
+.myReactTop {
+    position: absolute;
+    width: 20px;
+    height: 24px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: rgba(24, 167, 129, 0.297); */
+}
+.otherReactTop {
+    position: absolute;
+    width: 20px;
+    height: 24px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: rgba(24, 167, 129, 0.297); */
+}
+.otherReactTop:hover {
+    background-image: url(assets/rabillion/reactions/giftGrey.png);
+}
+.reactionExclamation {
+    position: absolute;
+    width: 20px;
+    height: 24px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(assets/rabillion/reactions/exclamation.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: rgba(24, 167, 129, 0.297); */
+}
+.reactionGift {
+    position: absolute;
+    width: 20px;
+    height: 24px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(assets/rabillion/reactions/gift.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: rgba(24, 167, 129, 0.297); */
+}
+.reactionGift:hover {
+    background-image: url(assets/rabillion/reactions/giftGray.png);
+}
+.flowerDisplay {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 50px;
+    /* background-color: rgba(159, 217, 255, 0.4); */
+}
+.myFlowerDisplay {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 50px;
+    /* background-color: rgba(159, 217, 255, 0.4); */
+}
+.otherFlowerDisplay {
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 50px;
+    /* background-color: rgba(159, 217, 255, 0.4); */
+}
+.flwr {
+    /* position: relative;
+    float: left; */
+    position: absolute;
+    pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: rgba(255, 192, 203, 0.402); */
+}
+/* .flwr:nth-child(-n+3) {
+    left: 10%;
+    top: 20%;
+}
+.flwr:nth-child(n+4):nth-child(-n+7) {
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%);
+}
+.flwr:nth-child(n+8):nth-child(-n+10) {
+    left: 95%;
+    top: 20%;
+    transform: translate(-100%);
+} */
+.flwr10 {
+    left: 80%;
+    top: 73%;
+    transform: translate(-100%);
+}
+.flwr9 {
+    left: 20%;
+    top: 73%;
+}
+.flwr8 {
+    left: 85%;
+    top: 50%;
+    transform: translate(-100%);
+}
+.flwr7 {
+    left: 15%;
+    top: 50%;
+}
+.flwr6 {
+    left: 65%;
+    top: 50%;
+    transform: translate(-100%);
+}
+.flwr5 {
+    left: 35%;
+    top: 50%;
+}
+.flwr4 {
+    left: 72%;
+    top: 25%;
+    transform: translate(-100%);
+}
+.flwr3 {
+    left: 28%;
+    top: 25%;
+}
+.flwr2 {
+   left: 50%;
+    top: 8%;
+    transform: translate(-50%);
+}
+.flwr1 {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+}
+
