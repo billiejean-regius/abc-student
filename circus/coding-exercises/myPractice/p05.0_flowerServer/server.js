@@ -47,6 +47,8 @@ players = {};
 // let y = 100; // for debugging
 // let x = 10; // for debugging
 
+
+
 io.on('connection', function (socket) {
   console.log('a user connected: ', socket.id);
 
@@ -89,6 +91,7 @@ io.on('connection', function (socket) {
   
   // players[socket.id].x = coordX;
   // players[socket.id].y = coordY;
+
   socket.broadcast.emit('newPlayer', players[socket.id]);
   // console.log(players[socket.id]);
  

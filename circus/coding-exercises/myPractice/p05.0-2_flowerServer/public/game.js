@@ -7,6 +7,8 @@ let minDist = 50;
 
 let player; 
 
+numOfFlowers = 5;
+
 let gameMap = document.createElement('div');
 gameMap.setAttribute('id', 'gameMap');
 gameMap.style.width = mapWidth  + 'px';
@@ -29,7 +31,7 @@ let faceDown;
 window.onkeydown = function(event) {
   const keyCode = event.key;
   event.preventDefault();
-  isFacing();
+  checkIsFacing();
 
   if(keyCode == leftKey) { 
     player.isFacingLeft();
@@ -53,8 +55,7 @@ window.onkeydown = function(event) {
     }
   }
 }
-
-function isFacing() {
+function checkIsFacing() {
   if(faceLeft === true || faceRight === true || faceUp === true || faceDown === true ) {
     if(faceDown === true) {
         faceLeft = false;
@@ -81,7 +82,7 @@ document.body.append(gameMap);
 
   // Game Objects & Players
 class Player {
-  constructor(posX, posY, playerId, isMe) {
+  constructor(posX, posY, isFacing, playerId, isMe) {
       // this.posX = 0; // for debugging
       // this.posY = 0; // for debugging
       this.posX = posX; // x position
@@ -92,33 +93,56 @@ class Player {
       this.isMe = isMe; // true or false
       this.elm; 
       this.myFlowers = []; // flower inventory
+      this.isFacing = isFacing;
       this.speed = 3; // # of px moved
   }
-  // PLAYER MOVEMENT & FACING FUNCTION
+  // PLAYER MOVEMENT & FACING FUNCTIONS
     // 
   isFacingRight() {
-    faceRight = true;
-    this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionRight.png)';
+    if(this.isMe === true) {
+      faceRight = true;
+      this.isFacing = "right";
+        this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionRight.png)';
+      socket.emit('playerIsFacing', player); 
+    } else {
+      this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionRight.png)';
+    }
   }
   isFacingLeft() {
-    faceLeft = true;
-    this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionLeft.png)';
+    if(this.isMe === true) {
+      faceLeft = true;
+      this.isFacing = "left";
+        this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionLeft.png)';
+      socket.emit('playerIsFacing', player); 
+    } else {
+      this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionLeft.png)';
+    }
   }
   isFacingUp() {
-    faceUp = true;
-    this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionBack.png)';
+    if(this.isMe === true) {
+      faceUp = true;
+      this.isFacing = "up";
+        this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionBack.png)';
+      socket.emit('playerIsFacing', player); 
+    } else {
+      this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionBack.png)';
+    }
   }
   isFacingDown() {
-    faceDown = true;
-    this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionFront.png)';
+    if(this.isMe === true) {
+      faceDown= true;
+      this.isFacing = "down";
+        this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionFront.png)';
+      socket.emit('playerIsFacing', player); 
+    } else {
+      this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionFront.png)';
+    }
   }
   stepRight(){
     // check if step would collide
     if( this.isColliding(this.posX + this.speed, this.posY) == true ){
 
     }else{
-      
-
       this.posX = this.posX + this.speed;
       socket.emit('playerMovement', ({x: this.posX, y: this.posY})); 
       this.updatePosition();
@@ -126,7 +150,6 @@ class Player {
       //   // console.log('pickup the flower');
       // }
     }
-   
   }
   stepLeft() {
     if( this.isColliding(this.posX - this.speed, this.posY) == true ){
@@ -135,7 +158,6 @@ class Player {
       this.posX = this.posX - this.speed;
       socket.emit('playerMovement', ({x: this.posX, y: this.posY})); 
       this.updatePosition();
-
       // if(this.isCollectingFlower(this.posX, this.posY) == true) {
       //   // console.log('pickup the flower');
       // }
@@ -148,7 +170,6 @@ class Player {
       this.posY = this.posY - this.speed;
       socket.emit('playerMovement', ({x: this.posX, y: this.posY})); 
       this.updatePosition();
-
       // if(this.isCollectingFlower(this.posX, this.posY) == true) {
       //   // console.log('pickup the flower');
       // }
@@ -159,17 +180,13 @@ class Player {
     if( this.isColliding(this.posX, this.posY + this.speed) == true ){
 
     } else {
-     
       this.posY = this.posY + this.speed;
       socket.emit('playerMovement', ({x: this.posX, y: this.posY})); 
       this.updatePosition();
-
       // if(this.isCollectingFlower(this.posX, this.posY) == true) {
       //   // console.log('pickup the flower');
       // }
-      
     }
-
   }
   isColliding(nextStepX, nextStepY) {
     //    - bounds of map
@@ -194,71 +211,63 @@ class Player {
       return true
     }
   }
-updatePosition() {
+  updatePosition() {
     // if me:
     if(this.isMe === true) {
       gameMap.style.left = - this.posX  + 'px';
       gameMap.style.top = - this.posY  + 'px';
     } else {
+      // let currentX = this.elm.style.left.substring(0, this.elm.style.left.length-2)
+      // let currentY = this.elm.style.top.substring(0, this.elm.style.top.length-2)
+      // // console.log(currentX, this.posX);
+
+      // if(currentX > this.posX){
+      //   //moving left
+      //   this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionLeft.png)';
+      // }else if(currentX < this.posX){
+      //   //moving right
+      //   this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionRight.png)';
+      // }
       this.elm.style.left = this.posX + 'px';
       this.elm.style.top = this.posY  + 'px';
     }
   }
   createElement(){
     this.elm = document.createElement('div');
-    this.collisionMarker = document.createElement('div');
-    this.playerPanel = document.createElement('div');
-    this.reactTop = document.createElement('div');
-    this.flowerDisplay = document.createElement('div');
-
-    for(let i=0; i<10; i++) {
-      this.flwrInventory = document.createElement('div');
-        this.flwrInventory.classList.add('flwr' + (i + 1), 'flwr');
-        // this.flwrInventory.setAttribute('class', 'flwr');
-
-      this.flowerDisplay.append(this.flwrInventory);
-    }
     // if me....
     if(this.isMe === true) {
       this.elm.setAttribute('class', 'mainPlayer');
-      this.collisionMarker.setAttribute('class', 'myMarker');
-      this.playerPanel.setAttribute('class', 'myPanel');
-      this.reactTop.setAttribute('class', 'myReactTop');
-      this.flowerDisplay.setAttribute('class', 'myFlowerDisplay');
     // if not me...
     } else {
       this.elm.setAttribute('class', 'otherPlayer');
-      
     }
     // else
     //  ///
-    // assign element id as the socket id
+    // ASSIGN ELEMENT ID AS SOCKET ID
       this.elm.id =  this.playerId;
       
       this.elm.style.width = this.width + 'px';
       this.elm.style.height = this.height + 'px';
 
-      // append the mainPlayer to the map
+      // APPEND THE MAINPLAYER TO THE MAP
       gameMap.append(this.elm)
 
-      // player backgroundImage
+      // PLAYER BACKGROUND IMAGE
       this.elm.style.backgroundImage = 'url(assets/rabillion/rabillionFront.png)';
     
-      
-    // name tag for debug tracking
-      // let nameTag = document.createElement("p");
-      // nameTag.innerHTML = this.playerId;
-      // this.elm.append(nameTag)
-
-     // set map coordinates from random player location
       this.updatePosition();
+
+      // NAME TAG FOR DEBUG TRACKING ELEMENTS
+        // let nameTag = document.createElement("p");
+        // nameTag.innerHTML = this.playerId;
+        // this.elm.append(nameTag)
   }
  };
 
 class worldObject {
-    constructor(name, id, posX, posY, width, height) {
+    constructor(name, elmId, posX, posY, width, height) {
         this.name = name;
-        this.id = id;
+        this.elmId = elmId;
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -267,10 +276,11 @@ class worldObject {
   };
   
   class Flower extends worldObject { 
-    constructor (name, id, posX, posY, isPicked, flwrImage, flwrIcon) {
-        super(name, id, posX, posY); 
+    constructor (elmId, posX, posY, isPicked, flwrImage, flwrIcon) {
+        super(elmId, posX, posY); 
         // this.scientific = scientific;
         // this.rarity = rarity;
+        this.elmId = elmId; // div id of the flower element
         this.posX = posX;
         this.posY = posY;
         this.width = 14;
@@ -285,7 +295,7 @@ class worldObject {
       this.flowerElm = document.createElement('div');
 
       this.flowerElm.setAttribute('class', 'flower');
-      this.flowerElm.setAttribute('id', this.id);
+      this.flowerElm.setAttribute('id', this.elmId);
 
       this.flowerElm.style.width = this.width + 'px';
       this.flowerElm.style.height = this.height + 'px';
@@ -304,9 +314,11 @@ class worldObject {
     }
   };
 
-  // let flowers = [
-  //   ghostOrchid = new Flower ("Ghost Orchid", "Dendrophylax Lindenii", 10, randomPosition() - 5, randomPosition() - 5, 10, 10),
-  // ];
+  let collectibleFlowers = [
+    // ghostOrchid = new Flower ("Ghost Orchid", "Dendrophylax Lindenii", 10, randomPosition() - 5, randomPosition() - 5, 10, 10),
+    {name: 'Ghost Orchid', scientificName: 'Dendrophylax lindenii', rarity: 10, flwrIcon: 'url(assets/world/blueFlowerIcon.png)', flwrImage: 'url(assets/world/blueFlowerPlant.png)'},
+    {name: 'Ghost Orchid', scientificName: 'Dendrophylax lindenii', rarity: 10, flwrIcon: 'url(assets/world/blueFlowerIcon.png)', flwrImage: 'url(assets/world/blueFlowerPlant.png)'}
+  ];
 
 let socket = io();
  
@@ -318,7 +330,7 @@ socket.on('currentPlayers', function (players) {
       if(activePlayers.indexOf(socket.id) === -1) {
         // console.log("adding main player");
         // addPlayer(players[id]);
-        player = new Player (players[id].x, players[id].y, players[id].playerId, true);
+        player = new Player (players[id].x, players[id].y, players[id].isFacing, players[id].playerId, true);
         // push player (mainPlayer) instance to activePlayers array
         activePlayers.push(player);
         // create mainPlayer element 
@@ -330,7 +342,7 @@ socket.on('currentPlayers', function (players) {
       if(activePlayers.indexOf(socket.id) === -1) {
         // console.log("adding other player");
         // addOtherPlayers(players[id]);
-        let guestPlayer = new Player (players[id].x, players[id].y, players[id].playerId, false);
+        let guestPlayer = new Player (players[id].x, players[id].y, players[id].isFacing, players[id].playerId, false);
         // push player (mainPlayer) instance to activePlayers array
         activePlayers.push(guestPlayer);
         // create mainPlayer element 
@@ -343,7 +355,7 @@ socket.on('currentPlayers', function (players) {
 socket.on('newPlayer', function (playerInfo) {
   console.log("A new player has joined");
   // addOtherPlayers(playerInfo);
-  let guestPlayer = new Player (playerInfo.x, playerInfo.y, playerInfo.playerId, false);
+  let guestPlayer = new Player (playerInfo.x, playerInfo.y, playerInfo.isFacing, playerInfo.playerId, false);
   // push player (mainPlayer) instance to activePlayers array
   activePlayers.push(guestPlayer);
   // create mainPlayer element 
@@ -362,7 +374,33 @@ socket.on('playerMoved', function (playerInfo) {
   movedPlayer.updatePosition();
 });
 
+socket.on('playerToFace', function (playerInfo) {
+  let playerTurned = activePlayers.find(player => player.playerId === playerInfo.playerId);
 
+  playerTurned.isFacing = playerInfo.isFacing;
+
+  if(playerInfo.isFacing == "right") {
+    playerTurned.isFacingRight();
+  } else if(playerInfo.isFacing == "left") {
+    playerTurned.isFacingLeft();
+  } else if(playerInfo.isFacing == "up") {
+    playerTurned.isFacingUp();
+  } else if(playerInfo.isFacing == "down") {
+    playerTurned.isFacingDown();
+  }
+
+});
+
+socket.on('plantFlowers', function (flowerInfo) {
+  for(let i=0; i < numOfFlowers; i++) {
+    // console.log(flowerInfo[i].x, flowerInfo[i].y);
+    let flower = new Flower (flowerInfo[i].elmId, flowerInfo[i].x, flowerInfo[i].y, flowerInfo[i].isPicked);
+
+    activeFlowers.push(flower);
+    // create mainPlayer element 
+    flower.createElement();
+  }
+});
 socket.on('disconnectUser', function (playerId) {
     // remove the div element of the disconnected player
     let el = document.getElementById(playerId);
