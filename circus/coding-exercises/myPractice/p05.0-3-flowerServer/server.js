@@ -27,8 +27,8 @@ function randomPosition() {
 }
 
 for(let i=0; i<numOfInactivePlayers; i++) {
-  inactivePlayerElm = {
-    elmId: 'inactive' + (i + 1),
+  npc = {
+    elmId: 'npc' + (i + 1),
     posX: randomPosition(),
     posY: randomPosition(),
     width: 24,
@@ -36,26 +36,31 @@ for(let i=0; i<numOfInactivePlayers; i++) {
     isActive: false,
   };
 
-  inactivePlayers.push(inactivePlayerElm);
+  inactivePlayers.push(npc);
 };
 
-console.log(inactivePlayers)
+// console.log(inactivePlayers)
 
 io.on('connection', function (socket) {
   console.log('a user connected: ', socket.id);
 
-  socket.emit('inactivePlayers', inactivePlayers);
+  socket.emit('npcElements', inactivePlayers);
 
   socket.on('startGame', function (game) {
 
     players[socket.id] = {
       playerId: socket.id,
     };
-  
+
     socket.emit('currentPlayers', players);
-  
-    socket.broadcast.emit('newPlayer', players[socket.id]);
   })
+
+  socket.on('updateNPC', function (npcInfo) {
+
+    
+    // socket.broadcast.emit('newPlayer', ({playerId: players[socket.id].playerId, elmId: npcInfo}));
+    // socket.broadcast.emit('newPlayer', players[socket.id], npcInfo);
+  });
 
   socket.on('playerIsFacing', function (player) {
     players[socket.id].isFacing = player.isFacing;

@@ -106,7 +106,11 @@ let socket = io();
 mainContainer.append(startMenu, gameMap);
 
 startButton.addEventListener('click', () => {
-  socket.emit('startGame');
+  if(inactivePlayers.length === 0) {
+    console.log("max players")
+  } else {
+    socket.emit('startGame');
+  }
 });
 
   // Game Objects & Players
@@ -132,24 +136,20 @@ class inactivePlayer {
 
       // append inactive player element to the map
       gameMap.append(this.elm);
+
+
+      let nameTag = document.createElement("p");
+      nameTag.innerHTML = this.elmId;
+      this.elm.append(nameTag);
   }
 }
+  socket.on('npcElements', function (npcInfo) {
+      for(let i = 0; i < npcInfo.length; i++) {
+        if(npcInfo[i].isActive === false) {
+          npcElm = new inactivePlayer (npcInfo[i].elmId, npcInfo[i].posX, npcInfo[i].posY);
+          npcElm.createElement();
 
-// for(let i=0; i<numOfInactivePlayers; i++) {
-//   let elmId = 'inactivePlayer' + (i + 1);
-
-//   inactivePlayerElm = new inactivePlayer (elmId, randomPosition(), randomPosition());
-
-//   inactivePlayers.push(inactivePlayerElm);
-//   inactivePlayerElm.createElement();
-// }
-  socket.on('inactivePlayers', function (inactiveInfo) {
-    for(let i=0; i< inactiveInfo.length; i++) {
-        if(inactiveInfo[i].isActive === false) {
-          inactivePlayerElm = new inactivePlayer (inactiveInfo[i].elmId, inactiveInfo[i].posX, inactiveInfo[i].posY);
-          inactivePlayerElm.createElement();
-
-          inactivePlayers.push(inactivePlayerElm);
+          inactivePlayers.push(npcElm);
         }
       }
   });
@@ -326,7 +326,6 @@ class inactivePlayer {
     }
   };
 
-
     socket.on('currentPlayers', function (players) {
       Object.keys(players).forEach(function (id) {
         // me:
@@ -337,17 +336,16 @@ class inactivePlayer {
 
             player = new Player (inactivePlayers[0].elmId, players[id].playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", true);
             // console.log(player);
+            socket.emit('updateNPC', inactivePlayers[0].elmId);
 
             let el = document.getElementById(inactivePlayers[0].elmId);
               el.remove(gameMap);
 
             inactivePlayers.splice(inactivePlayers[0], 1);
+            console.log(inactivePlayers);
             
             player.createElement();
-            activePlayers.push(player)
-            // console.log(activePlayers);
-
-            // player.createActivePlayer();
+            activePlayers.push(player);
           }
           // or them:
         } else {
@@ -355,46 +353,45 @@ class inactivePlayer {
           if(activePlayers.indexOf(socket.id) === -1) {
             // console.log("adding other player");
             player = new Player (inactivePlayers[0].elmId, players[id].playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", false);
-            console.log(inactivePlayers);
 
-            let el = document.getElementById(inactivePlayers[0].elmId);
-              el.remove(gameMap);
-            inactivePlayers.splice(inactivePlayers[0], 1);
-            
+            socket.emit('updateNPC', inactivePlayers[0].elmId);
+
             player.createElement();
             activePlayers.push(player)
+
             console.log(activePlayers);
+            console.log(inactivePlayers);
           }
         }
       });
     });
 
-    socket.on('newPlayer', function (playerInfo) {
-      console.log("A new player has joined");
-      // addOtherPlayers(playerInfo);
-      let el = document.getElementById(inactivePlayers[0].elmId);
-        el.remove(gameMap);
-      inactivePlayers.splice(inactivePlayers[0], 1);
+    // socket.on('newPlayer', function (playerInfo) {
+    //   console.log("A new player has joined");
+    //   console.log(playerInfo.elmId, playerInfo.playerId);
 
-      let guestPlayer = new Player (inactivePlayers[0].elmId, playerInfo.playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", false);
+    //   let guestPlayer = new Player (playerInfo.elmId, playerInfo.playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", false);
 
-      // push player (mainPlayer) instance to activePlayers array
-      activePlayers.push(guestPlayer);
-      // create mainPlayer element 
-      guestPlayer.createElement();
-    });
+    //   activePlayers.push(guestPlayer);
+    //   guestPlayer.createElement();
+
+    //   let el = document.getElementById(inactivePlayers[0].elmId);
+    //     el.remove(gameMap);
+    //     inactivePlayers.splice(playerInfo.elmId, 1);
+
+    //   console.log('active players: ', activePlayers);
+    //   console.log('inactive players: ', inactivePlayers);
+    // });
 
     socket.on('playerMoved', function (playerInfo) {
       // console.log("a player moved");
-    
-      // console.log('delete this: ', players[i].playerId.indexOf(socket.id));
+
       let movedPlayer = activePlayers.find(player => player.playerId === playerInfo.playerId);
       // console.log(movedPlayer);
     
-      movedPlayer.posX = playerInfo.x;
-      movedPlayer.posY = playerInfo.y;
-    
-      movedPlayer.updatePosition();
+        movedPlayer.posX = playerInfo.x;
+        movedPlayer.posY = playerInfo.y;
+        movedPlayer.updatePosition();
     });
     
     socket.on('playerToFace', function (playerInfo) {
@@ -420,15 +417,14 @@ class inactivePlayer {
         console.log('No players in game yet'); 
       } else {
         let el = document.getElementById(playerId);
-        el.remove(gameMap);
+          el.remove(gameMap);
 
-      for(let i = 0; i < activePlayers.length; i++) {
-        // console.log('delete this: ', players[i].playerId.indexOf(socket.id));
-        let disconnectedPlayer = activePlayers[i].playerId.indexOf(socket.id);
-        activePlayers.splice(disconnectedPlayer, 1);
-      }
-
-      console.log("A player has left the game");
+        for(let i = 0; i < activePlayers.length; i++) {
+          // console.log('delete this: ', players[i].playerId.indexOf(socket.id));
+          let disconnectedPlayer = activePlayers[i].playerId.indexOf(socket.id);
+            activePlayers.splice(disconnectedPlayer, 1);
+        }
+        console.log("A player has left the game");
       }
     });
 

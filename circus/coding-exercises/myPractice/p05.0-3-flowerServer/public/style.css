@@ -16,6 +16,7 @@ body {
 p {
     margin: 0;
     padding: 0;
+    font-size: 12px;
 }
 #mainContent {
     width: 100vw;
@@ -51,20 +52,14 @@ p {
     margin-top: 50vh;
     /* transform: translate(-50%, -50%); */
 }
-.flower {
-    position: absolute;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-color: rgb(242, 191, 220); */
-}
 .inactivePlayer {
     position: absolute;
     background-color: aqua;
 }
 .mainPlayer {
     position: fixed;
-    /* top: 50%;
-    left: 50%; */
+    top: 50%;
+    left: 50%;
     background-color: rgb(159, 218, 71);
 }
 .otherPlayer {
