@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-players = [];
-inactivePlayers = [];
+players = {};
+inactiveElements = [];
 
-let numOfInactivePlayers = 5;
+let numOfInactiveElements = 5;
 
 function randomPosition() {
   let random = parseInt( (50 + Math.random()*200) );
@@ -26,7 +26,7 @@ function randomPosition() {
   return random
 }
 
-for(let i=0; i<numOfInactivePlayers; i++) {
+for(let i=0; i< numOfInactiveElements; i++) {
   npc = {
     elmId: 'npc' + (i + 1),
     posX: randomPosition(),
@@ -36,35 +36,31 @@ for(let i=0; i<numOfInactivePlayers; i++) {
     isActive: false,
   };
 
-  inactivePlayers.push(npc);
+  inactiveElements.push(npc);
 };
 
-// console.log(inactivePlayers)
+// console.log(inactiveElements)
 
 io.on('connection', function (socket) {
   console.log('a user connected: ', socket.id);
   // emit the non-active player elements to the map
-  socket.emit('npcElements', inactivePlayers);
+  socket.emit('npcElements', inactiveElements);
   // emit current players to all users on the main page
   socket.emit('currentPlayers', players);
 
   socket.on('startGame', function (game) {
-    player = {
-      playerId: socket.id,
+    players[socket.id] = {
+      playerId: socket.id
     };
-
-    players.push(player);
 
     socket.emit('currentPlayers', players);
   })
 
   socket.on('activateNPC', function (npcInfo) {
-    console.log(npcInfo);
-    console.log(inactivePlayers);
-    let activatedNPC = inactivePlayers.find(npc => npc.elmId === npcInfo.elmId);
-    console.log(activatedNPC);
-    // socket.broadcast.emit('newPlayer', ({playerId: players[socket.id].playerId, elmId: npcInfo}));
-    // socket.broadcast.emit('newPlayer', players[socket.id], npcInfo);
+    let activatedNPC = inactiveElements.find(npc => npc.elmId === npcInfo.elmId);
+    console.log('element to remove: ', activatedNPC);
+  
+    socket.broadcast.emit('newPlayer', ({Id: npcInfo.playerId, Elm: activatedNPC}));
   });
 
   socket.on('playerIsFacing', function (player) {
@@ -78,7 +74,7 @@ io.on('connection', function (socket) {
     // console.log(movementData);
     players[socket.id].x = movementData.x;
     players[socket.id].y = movementData.y;
-    // console.log(movementData.x, movementData.y)
+
     // emit a message to all players about the player that moved
     socket.broadcast.emit('playerMoved', players[socket.id]);
     // console.log(players);

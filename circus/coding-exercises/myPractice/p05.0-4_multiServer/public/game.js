@@ -3,7 +3,7 @@
 let mapWidth = 300;
 let mapHeight = 300;
 
-let numOfInactivePlayers = 5;
+let numOfInactiveElements = 5;
 let minDist = 50;
 
 let mainContainer = document.createElement('div');
@@ -30,7 +30,7 @@ gameMap.style.height = mapHeight + 'px';
 let player; 
 
 let activePlayers = [];
-let inactivePlayers = [];
+let inactiveElements = [];
 let activeObjects = [];
 
 const leftKey = "ArrowLeft";
@@ -106,10 +106,11 @@ let socket = io();
 mainContainer.append(startMenu, gameMap);
 
 startButton.addEventListener('click', () => {
-  if(inactivePlayers.length === 0) {
+  if(inactiveElements.length === 0) {
     console.log("max players")
   } else {
     socket.emit('startGame');
+    startButton.style.display = "none";
   }
 });
 
@@ -149,7 +150,7 @@ class inactivePlayer {
           npcElm = new inactivePlayer (npcInfo[i].elmId, npcInfo[i].posX, npcInfo[i].posY);
           npcElm.createElement();
 
-          inactivePlayers.push(npcElm);
+          inactiveElements.push(npcElm);
         }
       }
   });
@@ -309,6 +310,7 @@ class inactivePlayer {
   };
 
     socket.on('currentPlayers', function (players) {
+      console.log('players received: ', players);
       Object.keys(players).forEach(function (id) {
         // me:
         if (players[id].playerId === socket.id) {
@@ -316,54 +318,70 @@ class inactivePlayer {
           if(activePlayers.indexOf(socket.id) === -1) {
             console.log("adding main player");
 
-            player = new Player (inactivePlayers[0].elmId, players[id].playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", true);
-            // emit activated npc element to server
-            socket.emit('activateNPC', inactivePlayers[0].elmId);
+            player = new Player (inactiveElements[0].elmId, players[id].playerId, inactiveElements[0].posX, inactiveElements[0].posY, "down", true);
+            // emit activated npc element 'player' to server
+            socket.emit('activateNPC', player);
 
-            let el = document.getElementById(inactivePlayers[0].elmId);
+            // remove the activated npc element from array & game map
+            let el = document.getElementById(inactiveElements[0].elmId);
               el.remove(gameMap);
-
-            inactivePlayers.splice(inactivePlayers[0], 1);
-            console.log(inactivePlayers);
+              inactiveElements.splice(inactiveElements[0], 1);
             
+            // create element and push to activePlayers array
             player.createElement();
             activePlayers.push(player);
+
+            console.log(players[id].playerId + ' added to ', activePlayers);
+            console.log('npc elements: ', inactiveElements);
           }
           // or them:
         } else {
           // otherwise, create an other player
-          if(activePlayers.indexOf(socket.id) === -1) {
-            // console.log("adding other player");
-            player = new Player (inactivePlayers[0].elmId, players[id].playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", false);
+          console.log('is this ' + players[id].playerId + ' in this: ', activePlayers);
+          console.log(activePlayers.indexOf(players[id].playerId));
 
-            socket.emit('updateNPC', inactivePlayers[0].elmId); 
+          if(activePlayers.indexOf(socket.id) === -1) {
+            console.log("adding other player");
+
+            player = new Player (inactiveElements[0].elmId, players[id].playerId, inactiveElements[0].posX, inactiveElements[0].posY, "down", false);
+
+            // emit activated npc element 'player' to server
+            socket.emit('activateNPC', player);
+
+            // remove the activated npc element from array & game map
+            let el = document.getElementById(inactiveElements[0].elmId);
+              el.remove(gameMap);
+              inactiveElements.splice(inactiveElements[0], 1);
 
             player.createElement();
             activePlayers.push(player)
 
-            console.log(activePlayers);
-            console.log(inactivePlayers); // npc element is still included
+            console.log('active players: ', activePlayers);
+            console.log('inactive players: ', inactiveElements);
           }
         }
       });
     });
 
-    // socket.on('newPlayer', function (playerInfo) {
-    //   console.log("A new player has joined");
-    //   console.log(playerInfo.elmId, playerInfo.playerId);
+    socket.on('newPlayer', function (playerInfo) {
+      console.log("A new player has joined");
+      // console log received information
+      console.log(playerInfo.Id, playerInfo.Elm);
 
-    //   let guestPlayer = new Player (playerInfo.elmId, playerInfo.playerId, inactivePlayers[0].posX, inactivePlayers[0].posY, "down", false);
+      let inactiveElm = playerInfo.Elm;
+    
+      let player = new Player (inactiveElm.elmId, playerInfo.Id, inactiveElm.posX, inactiveElm.posY, "down", false);
 
-    //   activePlayers.push(guestPlayer);
-    //   guestPlayer.createElement();
+      player.createElement();
+      activePlayers.push(player);
+      
+      let el = document.getElementById(inactiveElm.elmId);
+        el.remove(gameMap);
+        inactiveElements.splice(playerInfo.elmId, 1);
 
-    //   let el = document.getElementById(inactivePlayers[0].elmId);
-    //     el.remove(gameMap);
-    //     inactivePlayers.splice(playerInfo.elmId, 1);
-
-    //   console.log('active players: ', activePlayers);
-    //   console.log('inactive players: ', inactivePlayers);
-    // });
+      console.log('active players on newPlayer: ', activePlayers);
+      console.log('inactive players on newPlayer: ', inactiveElements);
+    });
 
     socket.on('playerMoved', function (playerInfo) {
       // console.log("a player moved");
@@ -395,8 +413,8 @@ class inactivePlayer {
 
     socket.on('disconnectUser', function (playerId) {
       // remove the div element of the disconnected player
-      if(activePlayers.length < 1) {
-        console.log('No players in game yet'); 
+      if(activePlayers.indexOf(playerId) === -1) {
+        console.log('No player to remove'); 
       } else {
         let el = document.getElementById(playerId);
           el.remove(gameMap);
